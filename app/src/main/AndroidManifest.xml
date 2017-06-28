@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.getirkit.example">
+
+    <!-- Permissions used by IRKit SDK -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Activities in IRKit SDK -->
+        <!-- Setup activity -->
+        <activity
+            android:name="com.getirkit.irkit.activity.IRKitSetupActivity"
+            android:label="@string/title_activity_irkitsetup"
+            android:theme="@style/AppTheme"
+            tools:replace="android:theme" />
+        <!-- Signal detail activity -->
+        <activity
+            android:name="com.getirkit.irkit.activity.SignalActivity"
+            android:label="@string/title_activity_signal"
+            android:theme="@style/AppTheme"
+            tools:replace="android:theme" />
+        <!-- Wait for signal activity -->
+        <activity
+            android:name="com.getirkit.irkit.activity.WaitSignalActivity"
+            android:label="@string/title_activity_wait_signal"
+            android:theme="@style/AppTheme"
+            tools:replace="android:theme" />
+        <!-- Device activity -->
+        <activity
+            android:name="com.getirkit.irkit.activity.DeviceActivity"
+            android:label="@string/title_activity_device"
+            android:theme="@style/AppTheme"
+            tools:replace="android:theme" />
+
+        <!-- IRKit apikey -->
+        <!-- See http://getirkit.com/en/ for details -->
+        <!-- apikeyの取得方法は http://getirkit.com/ を参照してください -->
+        <meta-data android:name="com.getirkit.IRKIT_API_KEY" android:value="YOUR_API_KEY" />
+    </application>
+</manifest>
