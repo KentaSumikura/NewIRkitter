@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.getirkit.irkit.IRKit;
@@ -482,5 +484,13 @@ public class MainActivity extends AppCompatActivity
 
     public void setDeviceListAdapter(DeviceListAdapter deviceListAdapter) {
         this.deviceListAdapter = deviceListAdapter;
+    }
+
+    //トリガーに遷移
+    public  void triger(){
+
+        Intent intent = new Intent(this, SignalActivity.class);
+        startActivity(intent);
+
     }
 }
