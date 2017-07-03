@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">IRKit Example App</string>
+    <string name="app_name">IRkitter</string>
 
     <string name="title_signals">Buttons</string>
     <string name="title_devices">Devices</string>
