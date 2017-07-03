@@ -209,9 +209,11 @@ public class MainActivity extends AppCompatActivity
             // decide what to show in the action bar.
             if (currentSection == 1) {  // Signals (Buttons)
                 getMenuInflater().inflate(R.menu.signals, menu);
+                getMenuInflater().inflate(R.menu.triger, menu);
             } else if (currentSection == 2) {  // Devices
                 getMenuInflater().inflate(R.menu.devices, menu);
             }
+
             restoreActionBar();
             return true;
         }
