@@ -3,6 +3,7 @@
 
     <string name="title_signals">Buttons</string>
     <string name="title_devices">Devices</string>
+    <string name="title_trigger">Trigger</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

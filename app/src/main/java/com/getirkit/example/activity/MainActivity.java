@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.getirkit.example.adapter.TriggerListAdapter;
 import com.getirkit.irkit.IRKit;
 import com.getirkit.irkit.IRKitEventListener;
 import com.getirkit.irkit.IRPeripheral;
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity
     private int selectedSignalPosition = -1;
     private SignalListAdapter signalListAdapter;
     private DeviceListAdapter deviceListAdapter;
-
+    private TriggerListAdapter triggerListAdapter;
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -486,6 +487,14 @@ public class MainActivity extends AppCompatActivity
 
     public void setDeviceListAdapter(DeviceListAdapter deviceListAdapter) {
         this.deviceListAdapter = deviceListAdapter;
+    }
+
+    public TriggerListAdapter getTriggerListAdapter() {
+        return triggerListAdapter;
+    }
+
+    public void setTriggerListAdapter(TriggerListAdapter triggerListAdapter) {
+        this.triggerListAdapter = triggerListAdapter;
     }
 
     //トリガーに遷移
