@@ -1,6 +1,7 @@
 package com.getirkit.example.admin;
 
 import com.getirkit.example.activity.MainActivity;
+import com.getirkit.example.activity.WifiConf;
 
 import java.util.List;
 
@@ -8,34 +9,18 @@ import java.util.List;
  * Created by 健太 on 2017/06/29.
  */
 
-public class Admin extends GroupAdapter{
-    //トリガー一覧を格納するList
-    List<GroupAdapter> TList;
-
-    //Listにトリガーを格納していく処理
-    void setting(){
-        TList.add(new GroupAdapter() {
-            @Override
-            void start() {
-
-            }
-
-            @Override
-            void Transmission() {
-
-            }
-        });
-    }
+public class Admin {
+    MainActivity main = new MainActivity();
+    WifiConf wifiConf = new WifiConf();
 
   //選択されたトリガーの監視スタート
-    @Override
     void start() {
+        //wifiConf.getwifissid();
         //ループで一斉に実行、又はチェックリストでの管理
-        //TList.get(0).start();
+        //VoiceConf.start();
     }
 //選択されたトリガーの赤外線送信
-    @Override
     void Transmission() {
-
+            main.onSelectSignalActionSend();
     }
 }

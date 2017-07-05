@@ -63,7 +63,7 @@
             android:value="YOUR_API_KEY" />
 
         <activity android:name=".activity.VoiceConf" />
-        <activity android:name=".activity.WifiConf"></activity>
+        <activity android:name=".activity.VoiceConf$WifiConf"></activity>
     </application>
 
 </manifest>

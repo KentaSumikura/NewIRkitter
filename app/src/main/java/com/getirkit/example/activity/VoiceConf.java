@@ -1,17 +1,17 @@
 package com.getirkit.example.activity;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.content.ActivityNotFoundException;
 import android.widget.Toast;
 
 import com.getirkit.example.R;
+import com.getirkit.example.admin.Admin;
 
 import java.util.ArrayList;
 
@@ -89,5 +89,4 @@ public class VoiceConf extends AppCompatActivity {
 
         return true;
     }
-
 }

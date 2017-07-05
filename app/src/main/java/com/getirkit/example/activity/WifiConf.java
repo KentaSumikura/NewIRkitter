@@ -1,14 +1,17 @@
 package com.getirkit.example.activity;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.getirkit.example.R;
 
-public class WifiConf extends AppCompatActivity {
+/**
+ * Created by 健太 on 2017/07/05.
+ */
+public  class WifiConf extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,3 +30,4 @@ public class WifiConf extends AppCompatActivity {
     }
 
 }
+
