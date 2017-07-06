@@ -9,11 +9,14 @@
         android:id="@+id/textView"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="123dp"
         android:gravity="center"
         android:text="電源を付ける合言葉を設定しましょう"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="60dp" />
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/textView5"
@@ -22,14 +25,18 @@
         android:gravity="center"
         android:text="ここに合言葉が表示されます"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="137dp" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="362dp"
         android:layout_height="67dp"
         android:text="音声入力スタート"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="428dp" />
+        android:layout_marginBottom="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 </android.support.constraint.ConstraintLayout>
