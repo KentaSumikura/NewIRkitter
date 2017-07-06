@@ -10,6 +10,7 @@ import android.speech.RecognizerIntent;
 import android.content.ActivityNotFoundException;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.getirkit.example.R;
@@ -65,7 +66,10 @@ public class VoiceConf extends AppCompatActivity {
             Log.d(TAG, "insert data:" + id);*/
 
             // トーストを使って結果表示
-            Toast.makeText(this, resultsString, Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, resultsString, Toast.LENGTH_LONG).show();
+
+            TextView textView = (TextView) findViewById(R.id.textView5);
+            textView.setText(resultsString);
         }
 
         super.onActivityResult(requestCode, resultCode, data);
