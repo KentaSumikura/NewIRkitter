@@ -11,7 +11,7 @@ import android.util.Log;
 
 public class IRkitterDBOpenHelper extends SQLiteOpenHelper
 {
-    static final String TAG = "IRkitterDBOpenHelper";
+    public static final String TAG = "IRkitterDBOpenHelper";
 
     static final String DATABASE_NAME = "irkitter";
     static final int DATABASE_VERSION = 1;
@@ -28,69 +28,53 @@ public class IRkitterDBOpenHelper extends SQLiteOpenHelper
     {
         try {
             Log.d(TAG, "IRkitterDBOpenHelper.onCreateが呼ばれました");
-            //irkitテーブルを生成
-            database.execSQL("CREATE TABLE irkit("
-                    + "redid integer primary key autoincrement,"
-                    + "irname text not null);");
 
             //infraredテーブルを生成
             database.execSQL("create table infrared("
-                    + "irid integer primary key autoincrement,"
-                    + "redpattern text not null);");
+                    + "redid integer primary key autoincrement,"
+                    + "redpattern text not null)");
 
             //iconテーブルを生成
             database.execSQL("create table icon("
                     + "iconid integer primary key autoincrement,"
-                    + "url text not null);");
+                    + "url text not null)");
 
             //orderテーブルを生成
             database.execSQL("create table order("
-                    + "irid integer primary key ,"
                     + "redid integer primary key ,"
                     + "ordername text not null,"
                     + "iconid integer,"
-                    + "foreign key (irid) references irkit(irid)"
                     + "foreign key (redid) references infrared(redid)"
-                    + "foreign key (iconid) references icon(iconid));");
+                    + "foreign key (iconid) references icon(iconid))");
 
             //voiceテーブルを生成
             database.execSQL("create table voice("
-                    + "irid integer primary key ,"
                     + "redid integer primary key ,"
                     + "voice text not null,"
-                    + "foreign key (irid) references irkit(irid)"
-                    + "foreign key (redid) references infrared(redid));");
+                    + "foreign key (redid) references infrared(redid))");
 
             //wifiテーブルを生成
             database.execSQL("create table wifi("
-                    + "irid integer primary key ,"
                     + "redid integer primary key ,"
                     + "wifissid text not null,"
-                    + "foreign key (irid) references irkit(irid)"
-                    + "foreign key (redid) references infrared(redid));");
+                    + "foreign key (redid) references infrared(redid))");
 
             //weatherテーブルを生成
             database.execSQL("create table weather("
-                    + "irid integer primary key ,"
                     + "redid integer primary key ,"
                     + "weather text not null,"
-                    + "foreign key (irid) references irkit(irid)"
-                    + "foreign key (redid) references infrared(redid));");
+                    + "foreign key (redid) references infrared(redid))");
 
             //gpsテーブルを生成
             database.execSQL("create table gps("
-                    + "irid integer primary key ,"
                     + "redid integer primary key ,"
                     + "gps text not null,"
-                    + "foreign key (irid) references irkit(irid)"
                     + "foreign key (redid) references infrared(redid));");
 
             //tempテーブルを生成
             database.execSQL("create table temp("
-                    + "irid integer primary key ,"
                     + "redid integer primary key ,"
                     + "temp integer not null,"
-                    + "foreign key (irid) references irkit(irid)"
                     + "foreign key (redid) references infrared(redid));");
 
             //timeテーブルを生成
@@ -103,34 +87,26 @@ public class IRkitterDBOpenHelper extends SQLiteOpenHelper
 
             //angularテーブルを生成
             database.execSQL("create table angular("
-                    + "irid integer primary key ,"
                     + "redid integer primary key ,"
                     + "angular integer not null default 100,"
-                    + "foreign key (irid) references irkit(irid)"
                     + "foreign key (redid) references infrared(redid));");
 
             //speedテーブルを生成
             database.execSQL("create table speed("
-                    + "irid integer primary key ,"
                     + "redid integer primary key ,"
                     + "speed integer not null default 100,"
-                    + "foreign key (irid) references irkit(irid)"
                     + "foreign key (redid) references infrared(redid));");
 
             //accelerationテーブルを生成
             database.execSQL("create table acceleration("
-                    + "irid integer primary key ,"
                     + "redid integer primary key ,"
                     + "acceleration integer not null default 100,"
-                    + "foreign key (irid) references irkit(irid)"
                     + "foreign key (redid) references infrared(redid));");
 
             //fingerprintテーブルを生成
             database.execSQL("create table fingerprint("
-                    + "irid integer primary key ,"
                     + "redid integer primary key ,"
                     + "fingerprint integer not null default 100,"
-                    + "foreign key (irid) references irkit(irid)"
                     + "foreign key (redid) references infrared(redid));");
         }catch (Exception e)
         {
@@ -144,7 +120,6 @@ public class IRkitterDBOpenHelper extends SQLiteOpenHelper
         {
             Log.d(TAG, "IRkitterDBOpenHelper.onUpgradeが呼ばれました");
             //それぞれのテーブルを再定義するために現在のテーブルを削除
-            db.execSQL("drop table if exists irkit");
             db.execSQL("drop table if exists infrared");
             db.execSQL("drop table if exists icon");
             db.execSQL("drop table if exists order");

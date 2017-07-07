@@ -1,5 +1,6 @@
 package com.getirkit.example.activity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.wifi.WifiInfo;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.content.ActivityNotFoundException;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,6 +24,8 @@ public class VoiceConf extends AppCompatActivity {
 
     // リクエストを識別するための変数宣言。適当な数字でよい
     private static final int REQUEST_CODE = 0;
+
+    public static final String TAG = "IRkitterDBOpenHelper";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +61,12 @@ public class VoiceConf extends AppCompatActivity {
             SQLiteDatabase db = helper.getWritableDatabase();
 
             //追加するデータを格納するContentValuesを生成
-            /*ContentValues values = new ContentValues();
-            values.put(voice.irid, irkitid);
-            values.put(voice.redid, infraredid);              //irkitと登録する赤外線のidがないと実験できない
-            values.put(voice.voice, resultsString);
+            ContentValues values = new ContentValues();
+            //values.put(voice.redid, infraredid);              //irkitと登録する赤外線のidがないと実験できない
+            //values.put(voice.voice, resultsString);
             //戻り値は生成されたデータの_IDが返却される
-            long id = db.insert(voice, null, values);
-            Log.d(TAG, "insert data:" + id);*/
+            //long id = db.insert(voice, null, values);
+            //Log.d(TAG, "insert data:" + id);
 
             // トーストを使って結果表示
             //Toast.makeText(this, resultsString, Toast.LENGTH_LONG).show();
