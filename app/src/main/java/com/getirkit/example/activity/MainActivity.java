@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(this, VoiceConf.class);
+        Intent intent = new Intent(this, WifiConf.class);
         startActivity(intent);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)

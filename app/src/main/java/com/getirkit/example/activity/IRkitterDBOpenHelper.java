@@ -13,7 +13,7 @@ public class IRkitterDBOpenHelper extends SQLiteOpenHelper
 {
     public static final String TAG = "IRkitterDBOpenHelper";
 
-    static final String DATABASE_NAME = "irkitter";
+    static final String DATABASE_NAME = "irkitter.db";
     static final int DATABASE_VERSION = 1;
 
     public IRkitterDBOpenHelper (Context context)
@@ -44,7 +44,7 @@ public class IRkitterDBOpenHelper extends SQLiteOpenHelper
                     + "redid integer primary key ,"
                     + "ordername text not null,"
                     + "iconid integer,"
-                    + "foreign key (redid) references infrared(redid)"
+                    + "foreign key (redid) references infrared(redid),"
                     + "foreign key (iconid) references icon(iconid))");
 
             //voiceテーブルを生成
