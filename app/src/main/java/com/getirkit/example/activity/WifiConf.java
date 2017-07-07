@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.getirkit.example.R;
@@ -15,7 +17,7 @@ import com.getirkit.example.admin.Admin;
 /**
  * Created by 健太 on 2017/07/05.
  */
-public  class WifiConf extends AppCompatActivity {
+public class WifiConf extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,9 @@ public  class WifiConf extends AppCompatActivity {
         try {
             WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
             WifiInfo w_info = wifiManager.getConnectionInfo();
-            Toast.makeText(this, w_info.getSSID(), Toast.LENGTH_LONG).show();
+            EditText edit = new EditText(this);
+            edit.setText(w_info.getSSID(), TextView.BufferType.NORMAL);
+            //Toast.makeText(this, w_info.getSSID(), Toast.LENGTH_LONG).show();
         } catch (ActivityNotFoundException e) {
             // エラー表示
             Toast.makeText(WifiConf.this,
