@@ -41,8 +41,8 @@ public class WifiConf extends AppCompatActivity {
         try {
             WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
             WifiInfo w_info = wifiManager.getConnectionInfo();
-            EditText edit = new EditText(this);
-            edit.setText(w_info.getSSID(), TextView.BufferType.NORMAL);
+            EditText editText1 = (EditText)findViewById(R.id.editText);
+            editText1.setText(w_info.getSSID());
             //Toast.makeText(this, w_info.getSSID(), Toast.LENGTH_LONG).show();
         } catch (ActivityNotFoundException e) {
             // エラー表示
