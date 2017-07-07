@@ -1,5 +1,6 @@
 package com.getirkit.example.activity;
 
+import android.content.ActivityNotFoundException;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -35,9 +36,15 @@ public  class WifiConf extends AppCompatActivity {
 
     public void getwifissid()
     {
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        WifiInfo w_info = wifiManager.getConnectionInfo();
-        Toast.makeText(this, w_info.getSSID(), Toast.LENGTH_LONG).show();
+        try {
+            WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+            WifiInfo w_info = wifiManager.getConnectionInfo();
+            Toast.makeText(this, w_info.getSSID(), Toast.LENGTH_LONG).show();
+        } catch (ActivityNotFoundException e) {
+            // エラー表示
+            Toast.makeText(WifiConf.this,
+                    "ActivityNotFoundException", Toast.LENGTH_LONG).show();
+        }
     }
 
 }
