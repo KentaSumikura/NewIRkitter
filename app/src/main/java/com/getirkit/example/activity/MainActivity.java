@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(this, WifiConf.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, WifiConf.class);
+        //startActivity(intent);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
