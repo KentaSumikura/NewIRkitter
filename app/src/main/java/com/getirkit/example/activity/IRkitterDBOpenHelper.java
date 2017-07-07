@@ -69,13 +69,13 @@ public class IRkitterDBOpenHelper extends SQLiteOpenHelper
             database.execSQL("create table gps("
                     + "redid integer primary key ,"
                     + "gps text not null,"
-                    + "foreign key (redid) references infrared(redid));");
+                    + "foreign key (redid) references infrared(redid))");
 
             //tempテーブルを生成
             database.execSQL("create table temp("
                     + "redid integer primary key ,"
                     + "temp integer not null,"
-                    + "foreign key (redid) references infrared(redid));");
+                    + "foreign key (redid) references infrared(redid))");
 
             //timeテーブルを生成
             database.execSQL("create table time("
@@ -83,31 +83,31 @@ public class IRkitterDBOpenHelper extends SQLiteOpenHelper
                     + "redid integer primary key ,"
                     + "time text not null,"
                     + "foreign key (irid) references irkit(irid)"
-                    + "foreign key (redid) references infrared(redid));");
+                    + "foreign key (redid) references infrared(redid))");
 
             //angularテーブルを生成
             database.execSQL("create table angular("
                     + "redid integer primary key ,"
                     + "angular integer not null default 100,"
-                    + "foreign key (redid) references infrared(redid));");
+                    + "foreign key (redid) references infrared(redid))");
 
             //speedテーブルを生成
             database.execSQL("create table speed("
                     + "redid integer primary key ,"
                     + "speed integer not null default 100,"
-                    + "foreign key (redid) references infrared(redid));");
+                    + "foreign key (redid) references infrared(redid))");
 
             //accelerationテーブルを生成
             database.execSQL("create table acceleration("
                     + "redid integer primary key ,"
                     + "acceleration integer not null default 100,"
-                    + "foreign key (redid) references infrared(redid));");
+                    + "foreign key (redid) references infrared(redid))");
 
             //fingerprintテーブルを生成
             database.execSQL("create table fingerprint("
                     + "redid integer primary key ,"
                     + "fingerprint integer not null default 100,"
-                    + "foreign key (redid) references infrared(redid));");
+                    + "foreign key (redid) references infrared(redid))");
         }catch (Exception e)
         {
             e.printStackTrace();
