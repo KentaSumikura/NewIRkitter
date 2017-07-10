@@ -1,6 +1,8 @@
 package com.getirkit.example.activity;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -284,6 +286,12 @@ public class MainActivity extends AppCompatActivity
             if (resultCode == RESULT_OK) {
                 Bundle args = data.getExtras();
                 IRSignal signal = args.getParcelable("signal");
+
+                /*IRkitterDBOpenHelper helper = new IRkitterDBOpenHelper(this);
+                SQLiteDatabase db = helper.getWritableDatabase();
+                ContentValues value = new ContentValues();
+                value.put(infrared.redpattern);*/
+
                 if (signal == null) {
                     Log.e(TAG, "failed to receive signal");
                     return;
