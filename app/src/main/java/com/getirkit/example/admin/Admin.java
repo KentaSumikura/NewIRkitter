@@ -1,6 +1,7 @@
 package com.getirkit.example.admin;
 
 import com.getirkit.example.activity.MainActivity;
+import com.getirkit.example.activity.VoiceConf;
 import com.getirkit.example.activity.WifiConf;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 public class Admin {
     MainActivity main = new MainActivity();
     WifiConf wifiConf = new WifiConf();
+    VoiceConf voiceConf = new VoiceConf();
 
     //コンストラクタ
     public Admin(){
@@ -20,10 +22,13 @@ public class Admin {
 
   //選択されたトリガーの監視スタート
     public void start() {
-        //wifiConf.getwifissid();
-        //ループで一斉に実行、又はチェックリストでの管理
-        //VoiceConf.start();
+        //一斉に実行（監視）
+        wifiConf.getwifissid();
+        voiceConf.voicestart();
+
     }
+
+
 //選択されたトリガーの赤外線送信
    public void Transmission() {
             main.onSelectSignalActionSend();
