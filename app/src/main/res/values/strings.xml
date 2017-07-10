@@ -23,4 +23,7 @@
         <item>宮崎県</item>
         <item>鹿児島県</item>
     </string-array>
+    <string name="label_detect_calling">着信</string>
+    <string name="label_detect_talking">通話</string>
+    <string name="label_detect_callphone">電話</string>
 </resources>
