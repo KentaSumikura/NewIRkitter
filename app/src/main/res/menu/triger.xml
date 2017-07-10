@@ -4,5 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
 
-
+    <item
+        android:id="@+id/menu_trigger__add"
+        android:title="@string/add"
+        app:showAsAction="withText|ifRoom" />
 </menu>

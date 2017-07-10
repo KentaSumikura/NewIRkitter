@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 //import com.getirkit.example.adapter.TriggerListAdapter;
 import com.getirkit.example.adapter.TriggerListAdapter;
+import com.getirkit.example.fragment.TriggersFragment;
 import com.getirkit.irkit.IRKit;
 import com.getirkit.irkit.IRKitEventListener;
 import com.getirkit.irkit.IRPeripheral;
@@ -25,8 +26,10 @@ import com.getirkit.irkit.IRSignal;
 import com.getirkit.irkit.activity.DeviceActivity;
 import com.getirkit.irkit.activity.IRKitSetupActivity;
 import com.getirkit.irkit.activity.SignalActivity;
+import com.getirkit.irkit.activity.TriggerActivity;
 import com.getirkit.irkit.activity.WaitSignalActivity;
 import com.getirkit.example.R;
+import com.getirkit.example.adapter.TriggerListAdapter;
 import com.getirkit.example.adapter.DeviceListAdapter;
 import com.getirkit.example.adapter.SignalListAdapter;
 import com.getirkit.example.fragment.DevicesFragment;
@@ -37,7 +40,7 @@ import com.getirkit.irkit.net.IRAPIError;
 import com.getirkit.irkit.net.IRAPIResult;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks, IRKitEventListener, DevicesFragment.DevicesFragmentListener,
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks, IRKitEventListener, TriggersFragment.TriggersFragmentListener,DevicesFragment.DevicesFragmentListener,
         SelectSignalActionDialogFragment.SelectSignalActionDialogFragmentListener, SignalsFragment.SignalsFragmentListener {
     public static final String TAG = MainActivity.class.getSimpleName();
 
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity
     private SignalListAdapter signalListAdapter;
     private DeviceListAdapter deviceListAdapter;
     private TriggerListAdapter triggerListAdapter;
-    //private TriggerListAdapter triggerListAdapter;
+
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -127,6 +130,7 @@ public class MainActivity extends AppCompatActivity
         // killed and restarted.
         outState.putInt("editingPeripheralPosition", editingPeripheralPosition);
         outState.putInt("selectedSignalPosition", selectedSignalPosition);
+
         super.onSaveInstanceState(outState);
     }
 
@@ -176,7 +180,9 @@ public class MainActivity extends AppCompatActivity
                 fragment = SignalsFragment.newInstance(position + 1);
             } else if (position == 1) {  // Devices
                 fragment = DevicesFragment.newInstance(position + 1);
-            } else {
+            } else if (position == 2) { //trigger
+                fragment = TriggersFragment.newInstance(position + 1);
+            }else{
                 throw new IllegalStateException("Unknown drawer item position: " + position);
             }
         }
@@ -197,6 +203,9 @@ public class MainActivity extends AppCompatActivity
             case 2:
                 mTitle = getString(R.string.title_devices);
                 break;
+            case 3:
+                mTitle = "Trigger";
+                break;
         }
     }
 
@@ -215,9 +224,10 @@ public class MainActivity extends AppCompatActivity
             // decide what to show in the action bar.
             if (currentSection == 1) {  // Signals (Buttons)
                 getMenuInflater().inflate(R.menu.signals, menu);
-                getMenuInflater().inflate(R.menu.triger, menu);
             } else if (currentSection == 2) {  // Devices
                 getMenuInflater().inflate(R.menu.devices, menu);
+            }else if (currentSection == 3){ //triggers
+                getMenuInflater().inflate(R.menu.triger, menu);
             }
 
             restoreActionBar();
@@ -244,6 +254,18 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, IRKitSetupActivity.class);
             startActivityForResult(intent, REQUEST_IRKIT_SETUP);
             return true;
+        }else if (id == R.id.menu_signals__add){
+            //トリガー一覧画面に飛ぶ
+            Intent intent = new Intent(this, TriggerActivity.class);
+            /*
+            あとで編集します
+            リクエストを作成してstartActivityForResultで値を返してもらう処理を記載。
+
+            startActivityForResult(intent,);
+            *
+            *
+            * */
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -502,11 +524,8 @@ public class MainActivity extends AppCompatActivity
         this.triggerListAdapter = triggerListAdapter;
     }
 
-    //トリガーに遷移
-    public  void triger(){
-
-        Intent intent = new Intent(this, SignalActivity.class);
-        startActivity(intent);
+    @Override
+    public void onTriggerClick(int position) {
 
     }
 }
