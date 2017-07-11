@@ -56,12 +56,6 @@ public class WeatherConf extends AppCompatActivity{
         // activity_main.xml にUIコンポーネントを配置する
         setContentView(R.layout.activity_weather_conf);
 
-        // text_view1： activity_main.xml の TextView の id
-        TextView textView = (TextView) findViewById(R.id.text_view);
-
-        // テキストを設定
-        textView.setText("地域を選択してください");
-
         data = getSharedPreferences("DataStore",MODE_PRIVATE);
 
         String city = data.getString("DATA","Nothing");
