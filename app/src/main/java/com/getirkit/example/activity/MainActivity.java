@@ -277,10 +277,10 @@ public class MainActivity extends AppCompatActivity
                 Bundle args = data.getExtras();
                 IRSignal signal = args.getParcelable("signal");
 
-                /*IRkitterDBOpenHelper helper = new IRkitterDBOpenHelper(this);
+                IRkitterDBOpenHelper helper = new IRkitterDBOpenHelper(this);
                 SQLiteDatabase db = helper.getWritableDatabase();
-                ContentValues value = new ContentValues();
-                value.put(infrared.redpattern);*/
+               // ContentValues value = new ContentValues();
+                //value.put(infrared.redpattern);
 
                 if (signal == null) {
                     Log.e(TAG, "failed to receive signal");
