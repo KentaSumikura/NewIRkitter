@@ -63,10 +63,10 @@ public static class ViewHolder {
             holder = (DeviceListAdapter.ViewHolder) view.getTag();
         }
 
-        IRPeripheral peripheral = (IRPeripheral) data.get(position);
+       /* IRPeripheral peripheral = (IRPeripheral) data.get(position);
         holder.name.setText(peripheral.getCustomizedName());
         holder.details.setText( peripheral.getHostname() );
-
+        */
         return view;
     }
 }

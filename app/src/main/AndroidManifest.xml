@@ -60,7 +60,7 @@
         <!-- apikeyの取得方法は http://getirkit.com/ を参照してください -->
         <meta-data
             android:name="com.getirkit.IRKIT_API_KEY"
-            android:value="YOUR_API_KEY" />
+            android:value="02265F529CB84381A9CCD04AF087EB86" />
 
         <activity android:name=".activity.VoiceConf" />
         <activity android:name=".activity.WifiConf" />
