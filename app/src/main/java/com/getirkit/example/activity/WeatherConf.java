@@ -1,4 +1,4 @@
-package com.getirkit.example.Settings;
+package com.getirkit.example.activity;
 
 /**
  * Created by user on 2017/07/10.
@@ -33,11 +33,9 @@ import android.widget.Spinner;
 import android.view.View;
 import android.widget.Toast;
 import com.getirkit.example.R;
-import com.getirkit.example.activity.AppController;
-import com.getirkit.example.activity.MainActivity;
 
 
-public class WeatherSetup extends AppCompatActivity{
+public class WeatherConf extends AppCompatActivity{
     // JSONデータ取得URL
     private String URL_API = "http://weather.livedoor.com/forecast/webservice/json/v1?city=";
     private  SharedPreferences data;
@@ -56,7 +54,7 @@ public class WeatherSetup extends AppCompatActivity{
         super.onCreate(savedInstanceState);
 
         // activity_main.xml にUIコンポーネントを配置する
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_weather_conf);
 
         // text_view1： activity_main.xml の TextView の id
         TextView textView = (TextView) findViewById(R.id.text_view);
@@ -109,7 +107,7 @@ public class WeatherSetup extends AppCompatActivity{
                 public void onNothingSelected(AdapterView<?> parent) {
                     Log.d(TAG, "onNothingSelected");
                     Log.d(TAG, "AdapterView toString: " + parent.toString());
-                    Toast.makeText(WeatherSetup.this, "onNothingSelected", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(WeatherConf.this, "onNothingSelected", Toast.LENGTH_SHORT).show();
                 }
             });
 

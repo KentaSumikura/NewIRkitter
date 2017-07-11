@@ -256,11 +256,30 @@ public class MainActivity extends AppCompatActivity
             return true;
         }else if (id == R.id.triggers__listview){
             //トリガー一覧画面に飛ぶ
-            Intent intent = new Intent(this, TriggerlistActivity.class);
+            Intent intent = new Intent(this, TriggersFragment.class);
             startActivity(intent);
             //リクエストを作成してstartActivityForResultで値を返してもらう処理を記載。
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    //VoiceConfに遷移させるためのメソッド
+    public void VoiceIntent(){
+        Intent intent = new Intent(this, VoiceConf.class);
+        startActivity(intent);
+    }
+
+    //wifiConfに遷移させるためのメソッド
+    public void WifiIntent(){
+        Intent intent = new Intent(this,WifiConf.class);
+        startActivity(intent);
+    }
+
+    //WeatherConfに遷移させるためのメソッド
+    public void WeatherIntent(){
+        Log.d("つのだ","やまもと");
+        Intent intent = new Intent(this,WeatherConf.class);
+        startActivity(intent);
     }
 
     @Override
