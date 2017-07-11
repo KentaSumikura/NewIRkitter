@@ -65,7 +65,11 @@
         <activity android:name=".activity.VoiceConf" />
         <activity android:name=".activity.WifiConf" />
         <activity android:name=".Settings.WifiSetup" />
-        <activity android:name=".Settings.GrobalSettings"></activity>
+        <activity android:name=".Settings.GrobalSettings">
+            <activity android:name=".activity.Triggerlistf" />
+
+
+        </activity>
     </application>
 
 </manifest>

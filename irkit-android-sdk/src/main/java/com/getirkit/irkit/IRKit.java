@@ -93,6 +93,7 @@ public class IRKit {
      */
     public IRSignals signals;
 
+
     private Context context;
     private IRKitEventListener irkitEventListener;
     private IRHTTPClient httpClient;

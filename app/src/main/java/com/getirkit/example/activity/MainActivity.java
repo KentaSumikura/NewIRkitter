@@ -13,11 +13,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 //import com.getirkit.example.adapter.TriggerListAdapter;
+import com.getirkit.example.Settings.GrobalSettings;
 import com.getirkit.example.adapter.TriggerListAdapter;
 import com.getirkit.example.fragment.TriggersFragment;
 import com.getirkit.irkit.IRKit;
@@ -28,10 +27,8 @@ import com.getirkit.irkit.IRSignal;
 import com.getirkit.irkit.activity.DeviceActivity;
 import com.getirkit.irkit.activity.IRKitSetupActivity;
 import com.getirkit.irkit.activity.SignalActivity;
-import com.getirkit.irkit.activity.TriggerActivity;
 import com.getirkit.irkit.activity.WaitSignalActivity;
 import com.getirkit.example.R;
-import com.getirkit.example.adapter.TriggerListAdapter;
 import com.getirkit.example.adapter.DeviceListAdapter;
 import com.getirkit.example.adapter.SignalListAdapter;
 import com.getirkit.example.fragment.DevicesFragment;
@@ -51,6 +48,7 @@ public class MainActivity extends AppCompatActivity
     private static final int REQUEST_SIGNAL_DETAIL = 2;
     private static final int REQUEST_WAIT_SIGNAL = 3;
     private static final int REQUEST_DEVICE_DETAIL = 4;
+    private static final int REQUEST_TRIGGER_SETUP =5;
 
     private int currentSection;
     private int editingPeripheralPosition = -1;
@@ -256,25 +254,17 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, IRKitSetupActivity.class);
             startActivityForResult(intent, REQUEST_IRKIT_SETUP);
             return true;
-        }else if (id == R.id.menu_signals__add){
+        }else if (id == R.id.triggers__listview){
             //トリガー一覧画面に飛ぶ
-            Intent intent = new Intent(this, TriggerActivity.class);
-            /*
-            あとで編集します
-            リクエストを作成してstartActivityForResultで値を返してもらう処理を記載。
-
-            startActivityForResult(intent,);
-            *
-            *
-            * */
-
+            Intent intent = new Intent(this, TriggerlistActivity.class);
+            startActivity(intent);
+            //リクエストを作成してstartActivityForResultで値を返してもらう処理を記載。
         }
-
         return super.onOptionsItemSelected(item);
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode ,Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IRKIT_SETUP) {  // Returned from IRKitSetupActivity
             if (resultCode == RESULT_OK) {
@@ -367,9 +357,13 @@ public class MainActivity extends AppCompatActivity
                 }
             }
             selectedSignalPosition = -1;
+
         } else {
+
+
+            }
             Log.e(TAG, "unknown requestCode: " + requestCode);
-        }
+
     }
 
     private void saveEditingPeripheral(IRPeripheral peripheral) {
@@ -534,6 +528,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onTriggerClick(int position) {
+
 
     }
 }

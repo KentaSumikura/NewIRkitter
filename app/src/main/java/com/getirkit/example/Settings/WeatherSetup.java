@@ -36,6 +36,7 @@ import com.getirkit.example.R;
 import com.getirkit.example.activity.AppController;
 import com.getirkit.example.activity.MainActivity;
 
+
 public class WeatherSetup extends AppCompatActivity{
     // JSONデータ取得URL
     private String URL_API = "http://weather.livedoor.com/forecast/webservice/json/v1?city=";
