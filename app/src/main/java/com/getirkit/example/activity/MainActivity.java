@@ -1,6 +1,7 @@
 package com.getirkit.example.activity;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -101,6 +104,11 @@ public class MainActivity extends AppCompatActivity
 
         // Show dialog after orientation change (support library bug?)
         showSelectSignalActionDialogIfNeeded();
+
+        // Receiverインスタンスの生成
+        phoneStateListener = new CallReceiver(this);
+        // TelephonyManagerインスタンスの生成(Context.TELEPHONY_SERVICEを指定)
+        manager = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE));
     }
 
     /**
@@ -151,6 +159,8 @@ public class MainActivity extends AppCompatActivity
         // Get clientkey if we have not received it yet
         // clientkeyをまだ取得していない場合は取得する
         irkit.registerClient();
+        //着信
+        manager.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
     }
 
     @Override
@@ -555,4 +565,9 @@ public class MainActivity extends AppCompatActivity
 
 
     }
+
+    // 各フィールドの設定
+    CallReceiver phoneStateListener;
+    TelephonyManager manager;
+
 }
