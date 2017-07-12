@@ -65,9 +65,10 @@
             android:name="com.getirkit.IRKIT_API_KEY"
             android:value="02265F529CB84381A9CCD04AF087EB86" />
 
-        <activity android:name=".activity.VoiceConf" />
+        <activity android:name=".activity.VoiceConf"/>
         <activity android:name=".activity.WifiConf" />
         <activity android:name=".activity.WeatherConf" />
+        <activity android:name=".activity.CallConf" />
         <activity android:name=".Settings.WifiSetup" />
         <activity android:name=".Settings.GrobalSettings">
 
