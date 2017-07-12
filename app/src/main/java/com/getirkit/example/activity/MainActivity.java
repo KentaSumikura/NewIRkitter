@@ -566,7 +566,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    // 各フィールドの設定
+    // 着信　各フィールドの設定
     CallReceiver phoneStateListener;
     TelephonyManager manager;
 
