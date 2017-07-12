@@ -256,11 +256,30 @@ public class MainActivity extends AppCompatActivity
             return true;
         }else if (id == R.id.triggers__listview){
             //トリガー一覧画面に飛ぶ
-            Intent intent = new Intent(this, TriggerlistActivity.class);
+            Intent intent = new Intent(this, TriggersFragment.class);
             startActivity(intent);
             //リクエストを作成してstartActivityForResultで値を返してもらう処理を記載。
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    //VoiceConfに遷移させるためのメソッド
+    public void VoiceIntent(){
+        Intent intent = new Intent(this, VoiceConf.class);
+        startActivity(intent);
+    }
+
+    //wifiConfに遷移させるためのメソッド
+    public void WifiIntent(){
+        Intent intent = new Intent(this,WifiConf.class);
+        startActivity(intent);
+    }
+
+    //WeatherConfに遷移させるためのメソッド
+    public void WeatherIntent(){
+        Log.d("つのだ","やまもと");
+        Intent intent = new Intent(this,WeatherConf.class);
+        startActivity(intent);
     }
 
     @Override
@@ -277,10 +296,10 @@ public class MainActivity extends AppCompatActivity
                 Bundle args = data.getExtras();
                 IRSignal signal = args.getParcelable("signal");
 
-                /*IRkitterDBOpenHelper helper = new IRkitterDBOpenHelper(this);
+                IRkitterDBOpenHelper helper = new IRkitterDBOpenHelper(this);
                 SQLiteDatabase db = helper.getWritableDatabase();
-                ContentValues value = new ContentValues();
-                value.put(infrared.redpattern);*/
+               // ContentValues value = new ContentValues();
+                //value.put(infrared.redpattern);
 
                 if (signal == null) {
                     Log.e(TAG, "failed to receive signal");
