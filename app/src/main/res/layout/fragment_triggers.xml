@@ -1,45 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingTop="@dimen/activity_horizontal_margin"
     tools:context=".fragment.TriggersFragment"
     tools:ignore="RtlSymmetry">
 
+
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="357dp"
+        android:layout_height="58dp"
+        android:textSize="20sp"
+        android:text="トリガーを選択してください。"
+        android:layout_below="@+id/triggers__listview"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="27dp" />
+
     <ListView
         android:id="@+id/triggers__listview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:divider="@null"
         android:dividerHeight="0dp" />
 
-    <TextView
-        android:id="@+id/text_imagebutton"
-        android:textSize="30sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="ImageButton" />
-
     <ImageButton
-        android:id="@+id/image_button"
+        android:id="@+id/Voice_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#888"
-      />
+        android:layout_column="0"
+        android:layout_row="5"
+        android:background="#00000000"
+        android:src="@drawable/voice01"
+        android:layout_below="@+id/Weather_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:id="@+id/Weather_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="4"
+        android:background="#00000000"
+        android:src="@drawable/weather01"
+        android:layout_below="@+id/Wifi_button"
+        android:layout_toRightOf="@+id/triggers__listview"
+        android:layout_toEndOf="@+id/triggers__listview" />
+
+    <ImageButton
+        android:id="@+id/Wifi_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="3"
+        android:background="#00000000"
+        android:src="@drawable/wifi01"
+        android:layout_below="@+id/Calling_button"
+        android:layout_toRightOf="@+id/triggers__listview"
+        android:layout_toEndOf="@+id/triggers__listview" />
+
+    <ImageButton
+        android:id="@+id/Calling_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="2"
+        android:background="#00000000"
+        android:src="@drawable/call01"
+        android:layout_below="@+id/Timer_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:id="@+id/Timer_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="1"
+        android:background="#00000000"
+        android:src="@drawable/timer01"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/text_view"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
-        android:id="@+id/text_button"
-        android:textSize="30sp"
-        android:layout_width="match_parent"
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:gravity="center"
-        android:text="Button" />
+        android:layout_above="@+id/Calling_button"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/Timer_button"
+        android:layout_toRightOf="@+id/Timer_button"
+        android:text="家電をつけたい時間を設定してください。"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Wifi_button"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView7"
+        android:layout_toRightOf="@+id/Calling_button"
+        android:text="通話中または着信中のON/OFFの  切り替えを行えます。"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Weather_button"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/Calling_button"
+        android:layout_toRightOf="@+id/Wifi_button"
+        android:text="お家のWi-Fi情報を入力してください。"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Voice_button"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView9"
+        android:layout_toRightOf="@+id/Weather_button"
+        android:text="お住まいの地域を選択してください。"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Voice_button"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/Weather_button"
+        android:layout_toRightOf="@+id/Voice_button"
+        android:text="好きなフレーズを登録してください。"
+        android:textSize="18sp" />
 
 
-</FrameLayout>
+</RelativeLayout>

@@ -72,9 +72,6 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        IRkitterDBOpenHelper helper = new IRkitterDBOpenHelper(this);
-        SQLiteDatabase db = helper.getWritableDatabase();
-
         //Intent intent = new Intent(this, WifiConf.class);
         //startActivity(intent);
 
@@ -280,9 +277,9 @@ public class MainActivity extends AppCompatActivity
                 Bundle args = data.getExtras();
                 IRSignal signal = args.getParcelable("signal");
 
-                IRkitterDBOpenHelper helper = new IRkitterDBOpenHelper(this);
+                /*IRkitterDBOpenHelper helper = new IRkitterDBOpenHelper(this);
                 SQLiteDatabase db = helper.getWritableDatabase();
-                /*ContentValues value = new ContentValues();
+                ContentValues value = new ContentValues();
                 value.put(infrared.redpattern);*/
 
                 if (signal == null) {
