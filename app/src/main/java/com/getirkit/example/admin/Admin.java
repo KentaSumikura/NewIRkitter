@@ -1,5 +1,6 @@
 package com.getirkit.example.admin;
 
+import com.getirkit.example.activity.CallConf;
 import com.getirkit.example.activity.MainActivity;
 import com.getirkit.example.activity.VoiceConf;
 import com.getirkit.example.activity.WifiConf;
@@ -14,7 +15,7 @@ public class Admin {
     MainActivity main = new MainActivity();
     WifiConf wifiConf = new WifiConf();
     VoiceConf voiceConf = new VoiceConf();
-
+    CallConf callConf = new CallConf();
     //コンストラクタ
     public Admin(){
 

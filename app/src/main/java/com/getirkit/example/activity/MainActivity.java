@@ -479,10 +479,11 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onSelectSignalActionSend() {
-        if (selectedSignalPosition == -1) {
+     /*   if (selectedSignalPosition == -1) {
             return;
-        }
-        final IRSignal signal = IRKit.sharedInstance().signals.get(selectedSignalPosition);
+        }*/
+        //final IRSignal signal = IRKit.sharedInstance().signals.get(selectedSignalPosition);
+        final IRSignal signal = IRKit.sharedInstance().signals.get(0);
         if (signal != null) {
             //赤外線送信
             IRKit.sharedInstance().sendSignal(signal, new IRAPIResult() {

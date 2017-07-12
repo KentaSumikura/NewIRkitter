@@ -5,6 +5,8 @@ import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.widget.Toast;
 
+import com.getirkit.example.admin.Admin;
+
 /**
  * Created by 博之 on 2017/07/11.
  */
@@ -24,7 +26,11 @@ public class CallReceiver extends PhoneStateListener {
             //すみくらここらへ
             // 着信処理部分
             case TelephonyManager.CALL_STATE_RINGING:
-                Toast.makeText(context, "着信" + incomingNumber, Toast.LENGTH_LONG).show();
+              //  Toast.makeText(context, "着信" + incomingNumber, Toast.LENGTH_LONG).show();
+                //MainActivity main = new MainActivity();
+                //main.onSelectSignalActionSend();
+                Admin admin = new Admin();
+                admin.Transmission();
                 break;
             // 通話処理部分
             case TelephonyManager.CALL_STATE_OFFHOOK:

@@ -68,7 +68,6 @@
         <activity android:name=".activity.WifiConf" />
         <activity android:name=".activity.CallConf"/>
         <activity android:name=".activity.WeatherConf" />
-        <activity android:name=".Settings.WifiSetup" />
         <activity android:name=".Settings.GrobalSettings" />
         <!-- 着信などを制御するBroadcastReceiver -->
         <receiver android:name=".activity.CallStateReceiver">

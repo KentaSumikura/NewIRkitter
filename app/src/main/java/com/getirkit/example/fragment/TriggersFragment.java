@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.getirkit.example.R;
+import com.getirkit.example.activity.CallConf;
 import com.getirkit.example.activity.MainActivity;
 
 
@@ -98,7 +99,5 @@ public class TriggersFragment extends Fragment{
         super.onAttach(activity);
 
         }
-
-
 
 }
