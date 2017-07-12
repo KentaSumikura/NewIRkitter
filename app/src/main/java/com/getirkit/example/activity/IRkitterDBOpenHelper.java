@@ -79,10 +79,8 @@ public class IRkitterDBOpenHelper extends SQLiteOpenHelper
 
             //timeテーブルを生成
             database.execSQL("create table time("
-                    + "irid integer primary key ,"
                     + "redid integer primary key ,"
                     + "time text not null,"
-                    + "foreign key (irid) references irkit(irid)"
                     + "foreign key (redid) references infrared(redid))");
 
             //angularテーブルを生成
