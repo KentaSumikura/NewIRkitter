@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 //import com.getirkit.example.adapter.TriggerListAdapter;
 import com.getirkit.example.Settings.GrobalSettings;
+import com.getirkit.example.activity.DBManager.IRkitDBManager;
 import com.getirkit.example.adapter.TriggerListAdapter;
 import com.getirkit.example.fragment.TriggersFragment;
 import com.getirkit.irkit.IRKit;
@@ -74,6 +75,8 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        IRkitDBManager manager = new IRkitDBManager(this);
 
         //Intent intent = new Intent(this, WifiConf.class);
         //startActivity(intent);
@@ -306,10 +309,8 @@ public class MainActivity extends AppCompatActivity
                 Bundle args = data.getExtras();
                 IRSignal signal = args.getParcelable("signal");
 
-                IRkitterDBOpenHelper helper = new IRkitterDBOpenHelper(this);
-                SQLiteDatabase db = helper.getWritableDatabase();
-               // ContentValues value = new ContentValues();
-                //value.put(infrared.redpattern);
+                IRkitDBManager manager = new IRkitDBManager(this);
+                manager.insertINFRARED(signal.toString());
 
                 if (signal == null) {
                     Log.e(TAG, "failed to receive signal");
