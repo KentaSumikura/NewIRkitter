@@ -11,10 +11,10 @@ import android.util.Log;
 
 public class IRkitterDBOpenHelper extends SQLiteOpenHelper
 {
-    public static final String TAG = "IRkitterDBOpenHelper";
+    private static final String TAG = "IRkitterDBOpenHelper";
 
     static final String DATABASE_NAME = "irkitter.db";
-    static final int DATABASE_VERSION = 1;
+    static final int DATABASE_VERSION = 3;
 
     public IRkitterDBOpenHelper (Context context)
     {
@@ -32,7 +32,7 @@ public class IRkitterDBOpenHelper extends SQLiteOpenHelper
             //infraredテーブルを生成
             database.execSQL("create table infrared("
                     + "redid integer primary key autoincrement,"
-                    + "redpattern text not null)");
+                    + "redpattern text not null);");
 
             //iconテーブルを生成
             database.execSQL("create table icon("
@@ -79,10 +79,8 @@ public class IRkitterDBOpenHelper extends SQLiteOpenHelper
 
             //timeテーブルを生成
             database.execSQL("create table time("
-                    + "irid integer primary key ,"
                     + "redid integer primary key ,"
                     + "time text not null,"
-                    + "foreign key (irid) references irkit(irid)"
                     + "foreign key (redid) references infrared(redid))");
 
             //angularテーブルを生成
