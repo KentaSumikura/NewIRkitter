@@ -31,12 +31,12 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         Log.d(TAG, "IRkitDBManager.onCreateが呼ばれました");
 
         db.execSQL("create table infrared("
-                + "     redid INTEGER PRIMARY KEY "
+                + "     redid INTEGER PRIMARY KEY AUTOINCREMENT "
                 + "    ,redpattern TEXT"
                 + ");");
 
         db.execSQL("create table icon("
-                + "     iconid INTEGER PRIMARY KEY "
+                + "     iconid INTEGER PRIMARY KEY AUTOINCREMENT "
                 + "    ,url TEXT"
                 + ");");
 
@@ -110,8 +110,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
     }
     //************** infrared�p�֐� ***************
     public void insertINFRARED(
-            long redid
-            ,String redpattern
+            String redpattern
     ){
         try{
             //�g�����U�N�V�����J�n
@@ -119,7 +118,6 @@ public class IRkitDBManager extends SQLiteOpenHelper {
 
             //�}���������e���ݒ�
             ContentValues cv = new ContentValues();
-            cv.put("redid", redid);
             cv.put("redpattern", redpattern);
 
             //�e�[�u���ɑ}��
@@ -152,8 +150,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
     }
     //************** icon�p�֐� ***************
     public void insertICON(
-            long iconid
-            ,String url
+            String url
     ){
         try{
             //�g�����U�N�V�����J�n
@@ -161,7 +158,6 @@ public class IRkitDBManager extends SQLiteOpenHelper {
 
             //�}���������e���ݒ�
             ContentValues cv = new ContentValues();
-            cv.put("iconid", iconid);
             cv.put("url", url);
 
             //�e�[�u���ɑ}��
