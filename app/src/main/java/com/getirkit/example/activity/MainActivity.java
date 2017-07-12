@@ -277,8 +277,13 @@ public class MainActivity extends AppCompatActivity
 
     //WeatherConfに遷移させるためのメソッド
     public void WeatherIntent(){
-        Log.d("つのだ","やまもと");
         Intent intent = new Intent(this,WeatherConf.class);
+        startActivity(intent);
+    }
+
+    //CallConfに遷移させるためのメソッド
+    public void CallIntent(){
+        Intent intent = new Intent(this,CallConf.class);
         startActivity(intent);
     }
 

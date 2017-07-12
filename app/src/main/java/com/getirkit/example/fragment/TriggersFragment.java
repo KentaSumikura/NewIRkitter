@@ -64,11 +64,20 @@ public class TriggersFragment extends Fragment{
                 list.VoiceIntent();
             }
         });
+
         ImageButton WifiButton = (ImageButton)rootView.findViewById(R.id.Wifi_button);
         WifiButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 list.WifiIntent();
+            }
+        });
+
+        ImageButton CallingButton = (ImageButton)rootView.findViewById(R.id.Calling_button);
+        CallingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                list.CallIntent();
             }
         });
 
