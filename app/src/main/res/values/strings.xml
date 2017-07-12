@@ -14,7 +14,7 @@
     <string name="edit">Edit</string>
     <string name="cancel">Cancel</string>
     <string name="new_irkit_found">New IRKit Found</string>
-    <string-array name ="list">
+    <string-array name="list">
         <item>選択してください</item>
         <item>福岡県</item>
         <item>佐賀県</item>
