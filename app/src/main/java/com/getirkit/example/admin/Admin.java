@@ -30,6 +30,8 @@ public class Admin {
     }
 
 
+
+
 //選択されたトリガーの赤外線送信
    public void Transmission() {
             main.onSelectSignalActionSend();

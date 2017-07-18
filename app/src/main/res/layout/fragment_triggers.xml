@@ -17,10 +17,9 @@
         android:layout_height="58dp"
         android:textSize="20sp"
         android:text="トリガーを選択してください。"
-        android:layout_below="@+id/triggers__listview"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="27dp" />
+        android:layout_alignParentTop="true" />
 
     <ListView
         android:id="@+id/triggers__listview"
@@ -39,7 +38,8 @@
         android:src="@drawable/voice01"
         android:layout_below="@+id/Weather_button"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="13dp" />
 
     <ImageButton
         android:id="@+id/Weather_button"
@@ -49,6 +49,7 @@
         android:layout_row="4"
         android:background="#00000000"
         android:src="@drawable/weather01"
+        android:layout_marginTop="13dp"
         android:layout_below="@+id/Wifi_button"
         android:layout_toRightOf="@+id/triggers__listview"
         android:layout_toEndOf="@+id/triggers__listview" />
@@ -62,8 +63,9 @@
         android:background="#00000000"
         android:src="@drawable/wifi01"
         android:layout_below="@+id/Calling_button"
-        android:layout_toRightOf="@+id/triggers__listview"
-        android:layout_toEndOf="@+id/triggers__listview" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp" />
 
     <ImageButton
         android:id="@+id/Calling_button"
@@ -75,7 +77,8 @@
         android:src="@drawable/call01"
         android:layout_below="@+id/Timer_button"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="11dp" />
 
     <ImageButton
         android:id="@+id/Timer_button"
@@ -85,10 +88,9 @@
         android:layout_row="1"
         android:background="#00000000"
         android:src="@drawable/timer01"
-        android:layout_marginTop="15dp"
         android:layout_below="@+id/text_view"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_toRightOf="@+id/triggers__listview"
+        android:layout_toEndOf="@+id/triggers__listview" />
 
     <TextView
         android:id="@+id/textView7"
@@ -106,25 +108,25 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/Wifi_button"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView7"
         android:layout_toRightOf="@+id/Calling_button"
         android:text="通話中または着信中のON/OFFの  切り替えを行えます。"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_alignTop="@+id/Calling_button"
+        android:layout_above="@+id/Wifi_button" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/Weather_button"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/Calling_button"
         android:layout_toRightOf="@+id/Wifi_button"
         android:text="お家のWi-Fi情報を入力してください。"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_alignBottom="@+id/Wifi_button"
+        android:layout_alignTop="@+id/Wifi_button" />
 
     <TextView
         android:id="@+id/textView10"
@@ -133,10 +135,10 @@
         android:layout_above="@+id/Voice_button"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView9"
         android:layout_toRightOf="@+id/Weather_button"
         android:text="お住まいの地域を選択してください。"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_alignTop="@+id/Weather_button" />
 
     <TextView
         android:id="@+id/textView11"
@@ -145,10 +147,10 @@
         android:layout_alignBottom="@+id/Voice_button"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/Weather_button"
         android:layout_toRightOf="@+id/Voice_button"
         android:text="好きなフレーズを登録してください。"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_alignTop="@+id/Voice_button" />
 
 
 </RelativeLayout>
