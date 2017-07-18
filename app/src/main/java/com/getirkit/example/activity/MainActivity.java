@@ -81,6 +81,8 @@ public class MainActivity extends AppCompatActivity
 
         IRkitDBManager manager = new IRkitDBManager(getApplicationContext());
 
+
+
         //manager.ALLDeleteINFRARED();
 
         ArrayList<DTableINFRARED> lst  = new ArrayList<DTableINFRARED>();
@@ -321,10 +323,11 @@ public class MainActivity extends AppCompatActivity
             if (resultCode == RESULT_OK) {
                 Log.d(TAG,""+data.getExtras());
                 Bundle args = data.getExtras();
-                IRSignal signal = args.getParcelable("signal");
 
+                //赤外線情報
+                IRSignal signal = args.getParcelable("signal");
                 IRkitDBManager manager = new IRkitDBManager(this);
-                manager.insertINFRARED(signal.toString());
+                manager.insertINFRARED(signal.getName());
 
                 if (signal == null) {
                     Log.e(TAG, "failed to receive signal");
