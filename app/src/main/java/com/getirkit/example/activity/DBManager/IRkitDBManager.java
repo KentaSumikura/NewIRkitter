@@ -6,6 +6,9 @@ package com.getirkit.example.activity.DBManager;
         import android.database.sqlite.SQLiteDatabase;
         import android.database.sqlite.SQLiteOpenHelper;
         import android.util.Log;
+
+        import com.getirkit.example.activity.datatable.DTableORDERTBL;
+
         import java.util.ArrayList;
 
 public class IRkitDBManager extends SQLiteOpenHelper {
@@ -48,7 +51,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
 
         db.execSQL("create table infrared("
                 + "     redid INTEGER PRIMARY KEY "
-                + "    ,redpattern TEXT"
+                + "    ,redpattern TEXT"        //赤外線命令の名前です(例：テレビ電源など)
                 + ");");
 
         db.execSQL("create table icon("
@@ -223,7 +226,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         return lst;
     }
     //************** order�p�֐� ***************
-    public void insertORDER(
+    public void insertORDERTBL(
             long redid
             ,String ordername
             ,long iconid
@@ -239,7 +242,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             cv.put("iconid", iconid);
 
             //�e�[�u���ɑ}��
-            sdb.insert("order", "", cv);
+            sdb.insert("ordertbl", "", cv);
 
             //�g�����U�N�V��������
             sdb.setTransactionSuccessful();
@@ -250,15 +253,15 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
     }
 
-    public ArrayList<com.getirkit.example.activity.datatable.DTableORDER> selectAllORDER(){
-        ArrayList<com.getirkit.example.activity.datatable.DTableORDER> lst = new ArrayList<com.getirkit.example.activity.datatable.DTableORDER>();
+    public ArrayList<DTableORDERTBL> selectAllORDER(){
+        ArrayList<DTableORDERTBL> lst = new ArrayList<DTableORDERTBL>();
         StringBuilder sql = new StringBuilder();
         sql.append(" SELECT *");
         sql.append(" FROM order;");
         Cursor c = sdb.rawQuery(sql.toString(), null);
         boolean isEof = c.moveToFirst();
         while (isEof) {
-            com.getirkit.example.activity.datatable.DTableORDER dt = new com.getirkit.example.activity.datatable.DTableORDER();
+            DTableORDERTBL dt = new DTableORDERTBL();
             dt.setREDID(c.getLong(0));
             dt.setORDERNAME(c.getString(1));
             dt.setICONID(c.getLong(2));

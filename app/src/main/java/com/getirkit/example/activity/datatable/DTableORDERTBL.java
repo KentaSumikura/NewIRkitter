@@ -1,6 +1,6 @@
 package com.getirkit.example.activity.datatable;
  
-public class DTableORDER {
+public class DTableORDERTBL {
     private long redid;
     private String ordername;
     private long iconid;
