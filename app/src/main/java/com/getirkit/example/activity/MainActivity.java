@@ -298,7 +298,7 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    //WeatherConfに遷移させるためのメソッド
+    //WeatherConfに遷移させるためのメソッドあ
     public void WeatherIntent(){
         Intent intent = new Intent(this,WeatherConf.class);
         startActivity(intent);
@@ -307,6 +307,12 @@ public class MainActivity extends AppCompatActivity
     //CallConfに遷移させるためのメソッド
     public void CallIntent(){
         Intent intent = new Intent(this,CallConf.class);
+        startActivity(intent);
+    }
+
+    //TimerConfに遷移させるためのメソッド
+    public void TimerIntent(){
+        Intent intent = new Intent(this,TimerConf.class);
         startActivity(intent);
     }
 

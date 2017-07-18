@@ -14,6 +14,8 @@ import com.getirkit.example.R;
 import com.getirkit.example.activity.CallConf;
 import com.getirkit.example.activity.MainActivity;
 
+import java.sql.Time;
+
 
 /**
  * Created by user on 2017/07/05.
@@ -87,6 +89,14 @@ public class TriggersFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 list.WeatherIntent();
+            }
+        });
+
+        ImageButton Timerbutton = (ImageButton)rootView.findViewById(R.id.Timer_button);
+        Timerbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                list.TimerIntent();
             }
         });
 
