@@ -21,6 +21,7 @@ import android.widget.Toast;
 //import com.getirkit.example.adapter.TriggerListAdapter;
 import com.getirkit.example.Settings.GrobalSettings;
 import com.getirkit.example.activity.DBManager.IRkitDBManager;
+import com.getirkit.example.activity.datatable.DTableINFRARED;
 import com.getirkit.example.adapter.TriggerListAdapter;
 import com.getirkit.example.fragment.TriggersFragment;
 import com.getirkit.irkit.IRKit;
@@ -41,6 +42,8 @@ import com.getirkit.example.fragment.SelectSignalActionDialogFragment;
 import com.getirkit.example.fragment.SignalsFragment;
 import com.getirkit.irkit.net.IRAPIError;
 import com.getirkit.irkit.net.IRAPIResult;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks, IRKitEventListener, TriggersFragment.TriggersFragmentListener,DevicesFragment.DevicesFragmentListener,
@@ -76,7 +79,17 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //IRkitDBManager manager = new IRkitDBManager(this);
+        IRkitDBManager manager = new IRkitDBManager(getApplicationContext());
+
+        //manager.ALLDeleteINFRARED();
+
+        ArrayList<DTableINFRARED> lst  = new ArrayList<DTableINFRARED>();
+        lst = manager.selectAllINFRARED();
+        for (DTableINFRARED infra: lst
+             ) {
+            Log.d(TAG,"MainActivity:90 "+infra.getREDID());
+            Log.d(TAG,infra.getREDPATTERN());
+        }
 
         //Intent intent = new Intent(this, WifiConf.class);
         //startActivity(intent);
@@ -306,6 +319,7 @@ public class MainActivity extends AppCompatActivity
             }
         } else if (requestCode == REQUEST_WAIT_SIGNAL) {  // Returned from WaitSignalActivity
             if (resultCode == RESULT_OK) {
+                Log.d(TAG,""+data.getExtras());
                 Bundle args = data.getExtras();
                 IRSignal signal = args.getParcelable("signal");
 
@@ -484,7 +498,8 @@ public class MainActivity extends AppCompatActivity
             return;
         }*/
         //final IRSignal signal = IRKit.sharedInstance().signals.get(selectedSignalPosition);
-        final IRSignal signal = IRKit.sharedInstance().signals.get(0);
+        final IRSignal signal = IRKit.sharedInstance().signals.get(1);
+        Log.d(TAG, "MainActivity:499"+signal);
         if (signal != null) {
             //赤外線送信
             IRKit.sharedInstance().sendSignal(signal, new IRAPIResult() {

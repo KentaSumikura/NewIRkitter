@@ -15,13 +15,29 @@ public class IRkitDBManager extends SQLiteOpenHelper {
 
     public IRkitDBManager(Context context) {
         super(context,"irkitter" , null, 1);
-        sdb = this.getReadableDatabase();
+        sdb = this.getWritableDatabase();
         Log.d(TAG, "IRkitDBManagerのコンストラクタが呼ばれました");
     }
 
 
     @Override
     public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
+        Log.d(TAG, "IRkitterDBOpenHelper.onUpgradeが呼ばれました");
+        //それぞれのテーブルを再定義するために現在のテーブルを削除
+        sdb.execSQL("drop table if exists ordertbl");
+        sdb.execSQL("drop table if exists voice");
+        sdb.execSQL("drop table if exists wifi");
+        sdb.execSQL("drop table if exists weather");
+        sdb.execSQL("drop table if exists gps");
+        sdb.execSQL("drop table if exists temp");
+        sdb.execSQL("drop table if exists time");
+        sdb.execSQL("drop table if exists angular");
+        sdb.execSQL("drop table if exists speed");
+        sdb.execSQL("drop table if exists acceleration");
+        sdb.execSQL("drop table if exists fingerprint");
+        sdb.execSQL("drop table if exists infrared");
+        sdb.execSQL("drop table if exists icon");
+        onCreate(sdb);
     }
 
 
@@ -31,16 +47,16 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         Log.d(TAG, "IRkitDBManager.onCreateが呼ばれました");
 
         db.execSQL("create table infrared("
-                + "     redid INTEGER PRIMARY KEY AUTOINCREMENT "
+                + "     redid INTEGER PRIMARY KEY "
                 + "    ,redpattern TEXT"
                 + ");");
 
         db.execSQL("create table icon("
-                + "     iconid INTEGER PRIMARY KEY AUTOINCREMENT "
+                + "     iconid INTEGER PRIMARY KEY "
                 + "    ,url TEXT"
                 + ");");
 
-        db.execSQL("create table order("
+        db.execSQL("create table ordertbl("
                 + "     redid INTEGER PRIMARY KEY "
                 + "    ,ordername TEXT"
                 + "    ,iconid INTEGER"
@@ -122,6 +138,24 @@ public class IRkitDBManager extends SQLiteOpenHelper {
 
             //�e�[�u���ɑ}��
             sdb.insert("infrared", "", cv);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void ALLDeleteINFRARED(
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            sdb.delete("infrared", null, null);
 
             //�g�����U�N�V��������
             sdb.setTransactionSuccessful();
