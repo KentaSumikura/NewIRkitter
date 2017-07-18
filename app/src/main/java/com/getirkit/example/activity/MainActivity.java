@@ -296,7 +296,7 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    //WeatherConfに遷移させるためのメソッド
+    //WeatherConfに遷移させるためのメソッドあ
     public void WeatherIntent(){
         Intent intent = new Intent(this,WeatherConf.class);
         startActivity(intent);
