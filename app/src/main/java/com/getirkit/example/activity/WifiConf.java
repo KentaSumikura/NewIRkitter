@@ -71,8 +71,14 @@ public class WifiConf extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Spinner spinner = (Spinner) parent;
                 int item = spinner.getSelectedItemPosition();
+
+                //赤外線送信
+                Admin admin = new Admin();
+                admin.Transmission(item);
+
                 String TAG = "Wifi";
                 Log.d(TAG,""+item);
+
             }
 
             //　アイテムが選択されなかった
@@ -122,7 +128,7 @@ public class WifiConf extends AppCompatActivity {
             String wifi = w_info.getSSID();
             if (fr.equals(w_info.getSSID().replace("\"", ""))){
                 //main.onSelectSignalActionSend();
-                admin.Transmission();
+               // admin.Transmission();
             }else{
                 editText1.setText("dame");
             }

@@ -503,11 +503,11 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onSelectSignalActionSend() {
-     /*   if (selectedSignalPosition == -1) {
+       if (selectedSignalPosition == -1) {
             return;
-        }*/
+        }
         //final IRSignal signal = IRKit.sharedInstance().signals.get(selectedSignalPosition);
-        final IRSignal signal = IRKit.sharedInstance().signals.get(1);
+        final IRSignal signal = IRKit.sharedInstance().signals.get(selectedSignalPosition);
         Log.d(TAG, "MainActivity:499"+signal);
         if (signal != null) {
             //赤外線送信
@@ -585,6 +585,33 @@ public class MainActivity extends AppCompatActivity
     public void onTriggerClick(int position) {
 
 
+    }
+    //トリガーで使うクラス
+    public void Transmission(int po) {
+        final IRSignal signal = IRKit.sharedInstance().signals.get(po);
+        Log.d(TAG, "MainActivity:499"+signal);
+        if (signal != null) {
+            //赤外線送信
+            IRKit.sharedInstance().sendSignal(signal, new IRAPIResult() {
+                @Override
+                public void onSuccess() {
+                }
+
+                @Override
+                public void onError(IRAPIError error) {
+                    String msg = "Error sending " + signal.getName() + ": " + error.message;
+                    Log.e(TAG, msg);
+                    Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onTimeout() {
+                    String msg = "Error sending " + signal.getName() + ": timeout";
+                    Log.e(TAG, msg);
+                    Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
 
