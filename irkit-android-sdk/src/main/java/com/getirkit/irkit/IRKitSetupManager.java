@@ -385,7 +385,7 @@ class IRKitSetupManager implements IRKitEventListener {
             IRKit.sharedInstance().connectToNormalWifi(normalWifiConfiguration, new IRKit.WifiConnectionChangeListener() {
                 @Override
                 public void onTargetWifiConnected(WifiInfo wifiInfo, NetworkInfo networkInfo) {
-                    // TODO: Is 500 ms delay enough?
+
                     if (isSettingUpIRKit) {
                         // Changed to normal Wi-Fi. Wait to settle.
                         Handler handler = new Handler();

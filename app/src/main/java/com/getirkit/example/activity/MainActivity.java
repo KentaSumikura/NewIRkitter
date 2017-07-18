@@ -3,7 +3,6 @@ package com.getirkit.example.activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -21,6 +20,7 @@ import android.widget.Toast;
 //import com.getirkit.example.adapter.TriggerListAdapter;
 import com.getirkit.example.Settings.GrobalSettings;
 import com.getirkit.example.activity.DBManager.IRkitDBManager;
+import com.getirkit.example.activity.datatable.DTableINFRARED;
 import com.getirkit.example.adapter.TriggerListAdapter;
 import com.getirkit.example.fragment.TriggersFragment;
 import com.getirkit.irkit.IRKit;
@@ -41,6 +41,8 @@ import com.getirkit.example.fragment.SelectSignalActionDialogFragment;
 import com.getirkit.example.fragment.SignalsFragment;
 import com.getirkit.irkit.net.IRAPIError;
 import com.getirkit.irkit.net.IRAPIResult;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks, IRKitEventListener, TriggersFragment.TriggersFragmentListener,DevicesFragment.DevicesFragmentListener,
@@ -71,12 +73,11 @@ public class MainActivity extends AppCompatActivity
      */
     private CharSequence mTitle;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //IRkitDBManager manager = new IRkitDBManager(this);
 
         //Intent intent = new Intent(this, WifiConf.class);
         //startActivity(intent);
@@ -307,10 +308,8 @@ public class MainActivity extends AppCompatActivity
         } else if (requestCode == REQUEST_WAIT_SIGNAL) {  // Returned from WaitSignalActivity
             if (resultCode == RESULT_OK) {
                 Bundle args = data.getExtras();
+                //赤外線の情報
                 IRSignal signal = args.getParcelable("signal");
-
-                IRkitDBManager manager = new IRkitDBManager(this);
-                manager.insertINFRARED(signal.toString());
 
                 if (signal == null) {
                     Log.e(TAG, "failed to receive signal");
@@ -331,6 +330,17 @@ public class MainActivity extends AppCompatActivity
                 // Add and save the signal
                 irkit.signals.add(signal);
                 irkit.signals.save();
+
+                IRkitDBManager manager = new IRkitDBManager(this);
+                manager.insertINFRARED(signal.toString());
+                ArrayList<DTableINFRARED> lst = new ArrayList<com.getirkit.example.activity.datatable.DTableINFRARED>();
+                lst = manager.selectAllINFRARED();
+                final String TAG = "IRkitDBManager";
+                for(DTableINFRARED infrared : lst){
+                    Log.d(TAG,""+infrared.getREDID());
+                    Log.d(TAG,infrared.getREDPATTERN());
+                }
+
                 if (signalListAdapter != null) {
                     signalListAdapter.notifyDataSetChanged();
                 }
@@ -483,8 +493,8 @@ public class MainActivity extends AppCompatActivity
      /*   if (selectedSignalPosition == -1) {
             return;
         }*/
-        //final IRSignal signal = IRKit.sharedInstance().signals.get(selectedSignalPosition);
-        final IRSignal signal = IRKit.sharedInstance().signals.get(0);
+        final IRSignal signal = IRKit.sharedInstance().signals.get(selectedSignalPosition);
+      //  final IRSignal signal = IRKit.sharedInstance().signals.get(0);
         if (signal != null) {
             //赤外線送信
             IRKit.sharedInstance().sendSignal(signal, new IRAPIResult() {
