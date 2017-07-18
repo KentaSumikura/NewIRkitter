@@ -66,19 +66,19 @@
 
         <activity android:name=".activity.VoiceConf" />
         <activity android:name=".activity.WifiConf" />
-        <activity android:name=".activity.CallConf"/>
+        <activity android:name=".activity.CallConf" />
         <activity android:name=".activity.WeatherConf" />
         <activity android:name=".Settings.GrobalSettings" />
         <!-- 着信などを制御するBroadcastReceiver -->
         <receiver android:name=".activity.CallStateReceiver">
-        <receiver android:name=".activity.CallReceiver" />
+            <receiver android:name=".activity.CallReceiver" />
 
             <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE" />
             </intent-filter>
         </receiver>
 
-
+        <activity android:name=".activity.TimerConf"></activity>
     </application>
 
 </manifest>

@@ -308,6 +308,12 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
+    //TimerConfに遷移させるためのメソッド
+    public void TimerIntent(){
+        Intent intent = new Intent(this,TimerConf.class);
+        startActivity(intent);
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode ,Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
