@@ -53,6 +53,7 @@ public class TriggersFragment extends Fragment{
     }
 
     public TriggersFragment() {
+        
     }
 
 
@@ -111,6 +112,8 @@ public class TriggersFragment extends Fragment{
 
         return rootView;
     }
+
+
 
     @Override
     public void onAttach(Activity activity) {
