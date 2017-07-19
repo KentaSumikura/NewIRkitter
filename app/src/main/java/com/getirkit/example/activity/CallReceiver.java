@@ -30,7 +30,7 @@ public class CallReceiver extends PhoneStateListener {
                 //MainActivity main = new MainActivity();
                 //main.onSelectSignalActionSend();
                 Admin admin = new Admin();
-                admin.Transmission();
+                //admin.Transmission();
                 break;
             // 通話処理部分
             case TelephonyManager.CALL_STATE_OFFHOOK:

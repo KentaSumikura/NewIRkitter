@@ -8,6 +8,7 @@ package com.getirkit.example.activity.DBManager;
         import android.util.Log;
 
         import com.getirkit.example.activity.datatable.DTableORDERTBL;
+        import com.getirkit.example.activity.datatable.DTablePHONETBL;
 
         import java.util.ArrayList;
 
@@ -17,7 +18,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
     private static final String TAG = "IRkitDBManager";
 
     public IRkitDBManager(Context context) {
-        super(context,"irkitter" , null, 1);
+        super(context,"irkitter" , null, 2);
         sdb = this.getWritableDatabase();
         Log.d(TAG, "IRkitDBManagerのコンストラクタが呼ばれました");
     }
@@ -25,22 +26,25 @@ public class IRkitDBManager extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
-        Log.d(TAG, "IRkitterDBOpenHelper.onUpgradeが呼ばれました");
-        //それぞれのテーブルを再定義するために現在のテーブルを削除
-        sdb.execSQL("drop table if exists ordertbl");
-        sdb.execSQL("drop table if exists voice");
-        sdb.execSQL("drop table if exists wifi");
-        sdb.execSQL("drop table if exists weather");
-        sdb.execSQL("drop table if exists gps");
-        sdb.execSQL("drop table if exists temp");
-        sdb.execSQL("drop table if exists time");
-        sdb.execSQL("drop table if exists angular");
-        sdb.execSQL("drop table if exists speed");
-        sdb.execSQL("drop table if exists acceleration");
-        sdb.execSQL("drop table if exists fingerprint");
-        sdb.execSQL("drop table if exists infrared");
-        sdb.execSQL("drop table if exists icon");
-        onCreate(sdb);
+        if( arg1 == 1 && arg2 == 2 ) {
+            Log.d(TAG, "IRkitterDBOpenHelper.onUpgradeが呼ばれました");
+            //それぞれのテーブルを再定義するために現在のテーブルを削除
+            arg0.execSQL("drop table if exists ordertbl");
+            arg0.execSQL("drop table if exists voice");
+            arg0.execSQL("drop table if exists wifi");
+            arg0.execSQL("drop table if exists weather");
+            arg0.execSQL("drop table if exists gps");
+            arg0.execSQL("drop table if exists temp");
+            arg0.execSQL("drop table if exists time");
+            arg0.execSQL("drop table if exists angular");
+            arg0.execSQL("drop table if exists speed");
+            arg0.execSQL("drop table if exists acceleration");
+            arg0.execSQL("drop table if exists fingerprint");
+            arg0.execSQL("drop table if exists phonetbl");
+            arg0.execSQL("drop table if exists infrared");
+            arg0.execSQL("drop table if exists icon");
+            onCreate(arg0);
+        }
     }
 
 
@@ -123,6 +127,12 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         db.execSQL("create table fingerprint("
                 + "     redid INTEGER PRIMARY KEY "
                 + "    ,fingerprint INTEGER"
+                + "    ,FOREIGN KEY (redid) REFERENCES infrared(redid)"
+                + ");");
+
+        db.execSQL("create table phonetbl("
+                + "     redid INTEGER PRIMARY KEY "
+                + "    ,pflag INTEGER"
                 + "    ,FOREIGN KEY (redid) REFERENCES infrared(redid)"
                 + ");");
 
@@ -225,7 +235,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
         return lst;
     }
-    //************** order�p�֐� ***************
+    //************** ordertbl�p�֐� ***************
     public void insertORDERTBL(
             long redid
             ,String ordername
@@ -257,7 +267,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         ArrayList<DTableORDERTBL> lst = new ArrayList<DTableORDERTBL>();
         StringBuilder sql = new StringBuilder();
         sql.append(" SELECT *");
-        sql.append(" FROM order;");
+        sql.append(" FROM ordertbl;");
         Cursor c = sdb.rawQuery(sql.toString(), null);
         boolean isEof = c.moveToFirst();
         while (isEof) {
@@ -690,5 +700,49 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
         return lst;
     }
+
+    //************** phonetbl�p�֐� ***************
+    public void insertPHONETBL(
+            long redid
+            ,long pflag
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            cv.put("pflag", pflag);
+
+            //�e�[�u���ɑ}��
+            sdb.insert("phonetbl", "", cv);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public ArrayList<com.getirkit.example.activity.datatable.DTablePHONETBL> selectAllPHONETBL(){
+        ArrayList<com.getirkit.example.activity.datatable.DTablePHONETBL> lst = new ArrayList<DTablePHONETBL>();
+        StringBuilder sql = new StringBuilder();
+        sql.append(" SELECT *");
+        sql.append(" FROM phonetbl;");
+        Cursor c = sdb.rawQuery(sql.toString(), null);
+        boolean isEof = c.moveToFirst();
+        while (isEof) {
+            com.getirkit.example.activity.datatable.DTablePHONETBL dt = new com.getirkit.example.activity.datatable.DTablePHONETBL();
+            dt.setREDID(c.getLong(0));
+            dt.setPFLAG(c.getLong(1));
+            lst.add(dt);
+            isEof = c.moveToNext();
+        }
+        return lst;
+    }
+
 }
 

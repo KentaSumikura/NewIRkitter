@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.getirkit.example.Settings.GrobalSettings;
 import com.getirkit.example.activity.DBManager.IRkitDBManager;
 import com.getirkit.example.activity.datatable.DTableINFRARED;
+import com.getirkit.example.activity.datatable.DTablePHONETBL;
 import com.getirkit.example.adapter.TriggerListAdapter;
 import com.getirkit.example.fragment.TriggersFragment;
 import com.getirkit.irkit.IRKit;
@@ -81,17 +82,17 @@ public class MainActivity extends AppCompatActivity
 
         IRkitDBManager manager = new IRkitDBManager(getApplicationContext());
 
-
-
         //manager.ALLDeleteINFRARED();
 
-        ArrayList<DTableINFRARED> lst  = new ArrayList<DTableINFRARED>();
-        lst = manager.selectAllINFRARED();
-        for (DTableINFRARED infra: lst
+        //manager.insertPHONETBL(100,0);
+
+        /*ArrayList<DTablePHONETBL> lst  = new ArrayList<DTablePHONETBL>();
+        lst = manager.selectAllPHONETBL();
+        for (DTablePHONETBL infra: lst
              ) {
-            Log.d(TAG,"MainActivity:90 "+infra.getREDID());
-            Log.d(TAG,infra.getREDPATTERN());
-        }
+            Log.d(TAG,"93行目 "+infra.getREDID());
+            Log.d(TAG,"94行目 "+infra.getPFLAG());
+        }*/
 
         //Intent intent = new Intent(this, WifiConf.class);
         //startActivity(intent);
