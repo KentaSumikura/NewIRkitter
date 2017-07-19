@@ -36,9 +36,10 @@
 
     <Button
         android:id="@+id/button7"
-        android:layout_width="328dp"
+        android:layout_width="200dp"
         android:layout_height="48dp"
         android:text="接続中のWiFiを検出"
+        android:textColor="#ffffff"
         android:background="@drawable/frame_style"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@+id/editText"
