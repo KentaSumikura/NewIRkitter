@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,92 +7,120 @@
     android:layout_height="match_parent"
     tools:context="com.getirkit.example.activity.TimerConf">
 
-    <TextView
-        android:id="@+id/text_text"
-        android:layout_width="32dp"
-        android:layout_height="91dp"
-        android:text="時間を設定してください"
-        android:textSize="20sp"
-        tools:ignore="HardcodedText,MissingConstraints"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="45dp" />
 
-    <EditText
-        android:id="@+id/hour"
-        android:layout_width="109dp"
-        android:layout_height="41dp"
-        android:ems="10"
-        android:inputType="number"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="101dp" />
-
-    <TextView
-        android:id="@+id/hour_text"
-        android:layout_width="44dp"
-        android:layout_height="41dp"
-        android:text="時"
-        android:textSize="30sp"
-        tools:ignore="HardcodedText,MissingConstraints"
-        tools:layout_editor_absoluteX="157dp"
-        tools:layout_editor_absoluteY="101dp" />
-
-    <EditText
-        android:id="@+id/minute"
-        android:layout_width="109dp"
-        android:layout_height="41dp"
-        android:ems="10"
-        android:inputType="number"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="201dp"
-        tools:layout_editor_absoluteY="101dp" />
-
-    <TextView
-        android:id="@+id/minute_text"
-        android:layout_width="42dp"
-        android:layout_height="41dp"
-        android:text="分"
-        android:textSize="30sp"
-        tools:ignore="HardcodedText,MissingConstraints"
-        tools:layout_editor_absoluteX="310dp"
-        tools:layout_editor_absoluteY="101dp" />
-
-    <Button
-        android:id="@+id/set"
-        android:layout_width="116dp"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:ignore="HardcodedText,InefficientWeight,MissingConstraints"
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="185dp"
-        android:layout_weight="0.08" />
-
-    <TextView
-        android:id="@+id/anthr"
-        android:layout_width="368dp"
-        android:layout_height="wrap_content"
-        android:text="1"
-        tools:ignore="HardcodedText"
+    <LinearLayout
+        android:layout_width="374dp"
+        android:layout_height="510dp"
+        android:orientation="vertical"
         tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp" />
+        tools:layout_editor_absoluteX="8dp">
 
-    <TextView
-        android:id="@+id/conbr"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="2"
-        tools:ignore="HardcodedText"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp" />
+        <TextView
+            android:id="@+id/text_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@+id/hour"
+            android:layout_alignStart="@+id/hour"
+            android:layout_below="@+id/hour_text"
+            android:layout_weight="1"
+            android:text="時間を設定してください。"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="49dp" />
 
-    <TextView
-        android:id="@+id/date"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="3"
-        tools:ignore="HardcodedText"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp" />
+        <EditText
+            android:id="@+id/hour"
+            android:layout_width="201dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/set"
+            android:layout_alignEnd="@+id/set"
+            android:layout_alignRight="@+id/set"
+            app:layout_constraintHorizontal_bias="0.059"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_editor_absoluteY="190dp" />
+
+        <TextView
+            android:id="@+id/hour_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="時"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="134dp"
+            tools:layout_editor_absoluteY="180dp" />
+
+        <EditText
+            android:id="@+id/minute"
+            android:layout_width="201dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_text"
+            android:layout_toEndOf="@+id/minute_text"
+            android:layout_toRightOf="@+id/minute_text"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="273dp" />
+
+        <TextView
+            android:id="@+id/minute_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/hour_text"
+            android:layout_toRightOf="@+id/hour_text"
+            android:layout_weight="1"
+            android:text="分"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="134dp"
+            tools:layout_editor_absoluteY="273dp" />
+
+        <Button
+            android:id="@+id/set"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/anthr"
+            android:layout_toEndOf="@+id/minute"
+            android:layout_toRightOf="@+id/minute"
+            android:layout_weight="1"
+            android:text="Button"
+            tools:layout_editor_absoluteX="134dp"
+            tools:layout_editor_absoluteY="337dp" />
+
+        <TextView
+            android:id="@+id/anthr"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/conbr"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1"
+            android:text="1"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="385dp" />
+
+        <TextView
+            android:id="@+id/conbr"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/date"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1"
+            android:text="2"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="414dp" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1"
+            android:text="3"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="440dp" />
+
+    </LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>

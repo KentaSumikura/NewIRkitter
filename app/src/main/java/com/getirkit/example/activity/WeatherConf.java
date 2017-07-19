@@ -4,6 +4,7 @@ package com.getirkit.example.activity;
  * Created by user on 2017/07/10.
  */
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -228,6 +229,8 @@ public class WeatherConf extends AppCompatActivity{
                 .setPositiveButton("エアコンを予約する", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // ボタンをクリックしたときの動作
+                        Intent intent = new Intent(getApplication(),TimerConf.class);
+                        startActivity(intent);
 
                     }
                 });

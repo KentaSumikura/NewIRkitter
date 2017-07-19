@@ -4,6 +4,7 @@
 
     <string name="title_signals">ボタン</string>
     <string name="title_devices">デバイス</string>
+    <string name="title_trigger">トリガー</string>
 
     <string name="navigation_drawer_open">ナビゲーションを開く</string>
     <string name="navigation_drawer_close">ナビゲーションを閉じる</string>

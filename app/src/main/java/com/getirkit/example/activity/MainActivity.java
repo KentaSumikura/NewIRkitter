@@ -225,7 +225,7 @@ public class MainActivity extends AppCompatActivity
                 mTitle = getString(R.string.title_devices);
                 break;
             case 3:
-                mTitle = "Trigger";
+                mTitle = getString(R.string.title_trigger) ;
                 break;
         }
     }

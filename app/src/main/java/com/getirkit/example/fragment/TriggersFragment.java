@@ -84,6 +84,15 @@ public class TriggersFragment extends Fragment{
             }
         });
 
+        ImageButton TimerButton = (ImageButton)rootView.findViewById(R.id.Timer_button);
+        TimerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                list.TimerIntent();
+            }
+        });
+
+
         ImageButton Weatherbutton = (ImageButton)rootView.findViewById(R.id.Weather_button);
         Weatherbutton.setOnClickListener(new View.OnClickListener() {
             @Override
