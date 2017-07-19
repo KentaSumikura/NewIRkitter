@@ -82,10 +82,11 @@ public class MainActivity extends AppCompatActivity
 
         IRkitDBManager manager = new IRkitDBManager(getApplicationContext());
 
-        //manager.ALLDeleteINFRARED();
+        //manager.ALLDeleteINFRARED();      //赤外線テーブルのレコード全部消えちゃうからこれは使わないで
 
-        //manager.insertPHONETBL(100,0);
+        //manager.insertPHONETBL(long,long);        //レコード追加メソッドの使い方
 
+        //テーブルのレコード全件取得の使い方
         /*ArrayList<DTablePHONETBL> lst  = new ArrayList<DTablePHONETBL>();
         lst = manager.selectAllPHONETBL();
         for (DTablePHONETBL infra: lst
