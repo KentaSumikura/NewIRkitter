@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity
         SelectSignalActionDialogFragment.SelectSignalActionDialogFragmentListener, SignalsFragment.SignalsFragmentListener {
     public static final String TAG = MainActivity.class.getSimpleName();
 
-    // Activity request codesa
+    // Activity request codes
     private static final int REQUEST_IRKIT_SETUP = 1;
     private static final int REQUEST_SIGNAL_DETAIL = 2;
     private static final int REQUEST_WAIT_SIGNAL = 3;

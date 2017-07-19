@@ -348,6 +348,25 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
     }
 
+    //************** wifi�p�֐� ***************
+    public void AlldeleteWIFI(
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            sdb.delete("wifi", null, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
     public ArrayList<com.getirkit.example.activity.datatable.DTableWIFI> selectAllWIFI(){
         ArrayList<com.getirkit.example.activity.datatable.DTableWIFI> lst = new ArrayList<com.getirkit.example.activity.datatable.DTableWIFI>();
         StringBuilder sql = new StringBuilder();
