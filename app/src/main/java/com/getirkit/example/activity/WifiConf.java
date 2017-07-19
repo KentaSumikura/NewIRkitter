@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.getirkit.example.R;
 import com.getirkit.example.activity.DBManager.IRkitDBManager;
 import com.getirkit.example.activity.datatable.DTableINFRARED;
+import com.getirkit.example.activity.datatable.DTableWIFI;
 import com.getirkit.example.admin.Admin;
 
 import java.util.ArrayList;
@@ -36,19 +37,44 @@ public class WifiConf extends AppCompatActivity {
     TelephonyManager manager;
     int item;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wifi_conf);
         //db
         IRkitDBManager dbwifi = new IRkitDBManager(getApplicationContext());
-        ArrayList<DTableINFRARED> wifilst  = new ArrayList<DTableINFRARED>();
-        wifilst = dbwifi.selectAllINFRARED();
+        ArrayList<DTableINFRARED> infrailst  = new ArrayList<DTableINFRARED>();
+        ArrayList<DTableWIFI> wifilst  = new ArrayList<DTableWIFI>();
+        infrailst = dbwifi.selectAllINFRARED();
+        wifilst = dbwifi.selectAllWIFI();
+
+        // ボタンを設定
+        Button button = (Button)findViewById(R.id.button7);
+        Button button2 = (Button)findViewById(R.id.settingbtn);
+        final EditText edit = (EditText)findViewById(R.id.editText);
+
+        /*赤外線送信
+        Admin admin = new Admin();
+        admin.Transmission(item);
+
+        for (DTableWIFI wifi: wifilst
+                ) {
+            edit.setText(wifi.getWIFISSID());
+            admin.Transmission((int)wifi.getREDID());
+
+        } */
+
+
+
+
+
         //プルダウンメニュー
         Spinner spinner;
         ArrayList<String> spinnerItems = new ArrayList<>();
 
-        for (DTableINFRARED infra: wifilst
+        for (DTableINFRARED infra: infrailst
                 ) {
             spinnerItems.add(infra.getREDPATTERN());
         }
@@ -100,10 +126,7 @@ public class WifiConf extends AppCompatActivity {
         final Admin admin = new Admin();
 
 
-        // ボタンを設定
-        Button button = (Button)findViewById(R.id.button7);
-        Button button2 = (Button)findViewById(R.id.settingbtn);
-        final EditText edit = (EditText)findViewById(R.id.editText);
+
 
 
         // wifiボタン
@@ -125,11 +148,11 @@ public class WifiConf extends AppCompatActivity {
 
                 //WifSSID情報保存
                 SpannableStringBuilder sb = (SpannableStringBuilder)edit.getText();
-                String str = sb.toString();
-                Log.d("SSID:",str);
+                String wifissid = sb.toString();
+                Log.d("SSID:",wifissid);
                 int posion = item;
 
-                dbwifi.insertWIFI(posion,str);
+                dbwifi.insertWIFI(posion,wifissid);
 
 
             }
