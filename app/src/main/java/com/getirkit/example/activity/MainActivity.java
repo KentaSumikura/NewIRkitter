@@ -1,9 +1,6 @@
 package com.getirkit.example.activity;
 
-import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -11,17 +8,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.telephony.PhoneStateListener;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 //import com.getirkit.example.adapter.TriggerListAdapter;
-import com.getirkit.example.Settings.GrobalSettings;
 import com.getirkit.example.activity.DBManager.IRkitDBManager;
 import com.getirkit.example.activity.datatable.DTableINFRARED;
+import com.getirkit.example.activity.datatable.DTablePHONETBL;
+import com.getirkit.example.activity.datatable.DTableWIFI;
 import com.getirkit.example.adapter.TriggerListAdapter;
 import com.getirkit.example.fragment.TriggersFragment;
 import com.getirkit.irkit.IRKit;
@@ -83,7 +79,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
-        //manager.ALLDeleteINFRARED();
+       // manager.ALLDeleteINFRARED();
        // manager.AlldeleteWIFI();
 
         ArrayList<DTableINFRARED> lst  = new ArrayList<DTableINFRARED>();
@@ -613,6 +609,23 @@ public class MainActivity extends AppCompatActivity
                 }
             });
         }
+    }
+
+
+    //CallReciver用
+    //トリガーで使うクラス
+    public void CallTransmission() {
+
+        //db
+        IRkitDBManager db = new IRkitDBManager(getApplicationContext());
+        ArrayList<DTablePHONETBL> phoneilst  = new ArrayList<DTablePHONETBL>();
+        phoneilst = db.selectAllPHONETBL();
+        for (DTablePHONETBL phonetbl: phoneilst
+                ) {
+              Transmission((int)phonetbl.getREDID());
+        }
+
+
     }
 
 

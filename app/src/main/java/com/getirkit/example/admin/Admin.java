@@ -36,4 +36,9 @@ public class Admin {
    public void Transmission(int po) {
             main.Transmission(po);
     }
+
+
+    public void CallTransmission(){
+        main.CallTransmission();
+    }
 }

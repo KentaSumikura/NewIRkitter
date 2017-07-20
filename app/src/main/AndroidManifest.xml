@@ -68,7 +68,6 @@
         <activity android:name=".activity.WifiConf" />
         <activity android:name=".activity.CallConf" />
         <activity android:name=".activity.WeatherConf" />
-        <activity android:name=".Settings.GrobalSettings" />
         <!-- 着信などを制御するBroadcastReceiver -->
         <receiver android:name=".activity.CallStateReceiver">
             <receiver android:name=".activity.CallReceiver" />
@@ -78,7 +77,8 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".activity.TimerConf"></activity>
+        <activity android:name=".activity.TimerConf" />
+        <activity android:name=".Settings.WifiSettingActivity"></activity>
     </application>
 
 </manifest>

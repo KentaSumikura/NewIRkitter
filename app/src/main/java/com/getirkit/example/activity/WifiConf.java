@@ -46,6 +46,7 @@ public class WifiConf extends AppCompatActivity {
         //db
         IRkitDBManager dbwifi = new IRkitDBManager(getApplicationContext());
         ArrayList<DTableINFRARED> infrailst  = new ArrayList<DTableINFRARED>();
+
         ArrayList<DTableWIFI> wifilst  = new ArrayList<DTableWIFI>();
         infrailst = dbwifi.selectAllINFRARED();
         wifilst = dbwifi.selectAllWIFI();
@@ -55,16 +56,16 @@ public class WifiConf extends AppCompatActivity {
         Button button2 = (Button)findViewById(R.id.settingbtn);
         final EditText edit = (EditText)findViewById(R.id.editText);
 
-        /*赤外線送信
+       // 赤外線送信
         Admin admin = new Admin();
         admin.Transmission(item);
 
         for (DTableWIFI wifi: wifilst
                 ) {
             edit.setText(wifi.getWIFISSID());
-            admin.Transmission((int)wifi.getREDID());
+          //  admin.Transmission((int)wifi.getREDID());
 
-        } */
+        }
 
 
 
@@ -81,6 +82,7 @@ public class WifiConf extends AppCompatActivity {
 
 
         spinner = (Spinner)findViewById(R.id.spinner);
+
         // ArrayAdapter
         ArrayAdapter<String> adapter
                 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,spinnerItems);
@@ -98,8 +100,8 @@ public class WifiConf extends AppCompatActivity {
                 item = spinner.getSelectedItemPosition();
 
                 //赤外線送信
-                Admin admin = new Admin();
-                admin.Transmission(item);
+                //Admin admin = new Admin();
+                //admin.Transmission(item);
 
                // String TAG = "Wifi";
                // Log.d(TAG,""+item);
@@ -116,16 +118,11 @@ public class WifiConf extends AppCompatActivity {
 
 
 
-
+        //Callconf
         // PhoneReceiverインスタンスの生成
         phoneStateListener = new CallReceiver(this);
         // TelephonyManagerインスタンスの生成(Context.TELEPHONY_SERVICEを指定)
         manager = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE));
-
-
-        final Admin admin = new Admin();
-
-
 
 
 
