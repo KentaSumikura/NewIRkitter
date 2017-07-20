@@ -57,8 +57,8 @@ public class WifiConf extends AppCompatActivity {
         final EditText edit = (EditText)findViewById(R.id.editText);
 
        // 赤外線送信
-        Admin admin = new Admin();
-        admin.Transmission(item);
+       // Admin admin = new Admin();
+       // admin.Transmission(item);
 
         for (DTableWIFI wifi: wifilst
                 ) {

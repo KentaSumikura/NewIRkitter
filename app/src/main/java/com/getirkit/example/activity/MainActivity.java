@@ -616,13 +616,18 @@ public class MainActivity extends AppCompatActivity
     public void CallTransmission() {
 
         //db
+        int po = 0;
         IRkitDBManager db = new IRkitDBManager(getApplicationContext());
         ArrayList<DTablePHONETBL> phoneilst  = new ArrayList<DTablePHONETBL>();
         phoneilst = db.selectAllPHONETBL();
         for (DTablePHONETBL phonetbl: phoneilst
                 ) {
-              Transmission((int)phonetbl.getREDID());
+            po = (int) phonetbl.getREDID();
+            //
+            // ]Transmission(po);
         }
+
+
 
 
     }

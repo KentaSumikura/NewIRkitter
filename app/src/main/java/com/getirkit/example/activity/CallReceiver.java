@@ -28,14 +28,15 @@ public class CallReceiver extends PhoneStateListener {
     public void onCallStateChanged(int state, String incomingNumber) {
         super.onCallStateChanged(state, incomingNumber);
 
+        Admin admin = new Admin();
 
         switch (state) {
             //すみくらここらへ
             // 着信処理部分
             case TelephonyManager.CALL_STATE_RINGING:
               //  Toast.makeText(context, "着信" + incomingNumber, Toast.LENGTH_LONG).show();
-                Admin admin = new Admin();
-                admin.CallTransmission();
+                //admin.CallTransmission();
+                admin.Transmission(0);
                 break;
             // 通話処理部分
             case TelephonyManager.CALL_STATE_OFFHOOK:
