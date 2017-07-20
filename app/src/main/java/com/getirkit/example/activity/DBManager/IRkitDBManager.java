@@ -1664,7 +1664,6 @@ public class IRkitDBManager extends SQLiteOpenHelper {
     //************** phonetbl�p�֐� ***************
     public void insertPHONETBL(
             long redid
-            ,long pflag
     ){
         try{
             //�g�����U�N�V�����J�n
@@ -1673,7 +1672,6 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             //�}���������e���ݒ�
             ContentValues cv = new ContentValues();
             cv.put("redid", redid);
-            cv.put("pflag", pflag);
 
             //�e�[�u���ɑ}��
             sdb.insert("phonetbl", "", cv);
