@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity
         lst = manager.selectAllINFRARED();
         for (DTableINFRARED infra: lst
              ) {
-            Log.d(TAG,"MainActivity:90 "+infra.getREDID());
+            Log.d(TAG,"MainActivity:93行目 "+infra.getREDID());
             Log.d(TAG,infra.getREDPATTERN());
         }
 
@@ -509,7 +509,7 @@ public class MainActivity extends AppCompatActivity
         }
         //final IRSignal signal = IRKit.sharedInstance().signals.get(selectedSignalPosition);
         final IRSignal signal = IRKit.sharedInstance().signals.get(selectedSignalPosition);
-        Log.d(TAG, "MainActivity:499"+signal);
+        Log.d(TAG, "MainActivity:512行目"+signal);
         if (signal != null) {
             //赤外線送信
             IRKit.sharedInstance().sendSignal(signal, new IRAPIResult() {
@@ -590,7 +590,7 @@ public class MainActivity extends AppCompatActivity
     //トリガーで使うクラス
     public void Transmission(int po) {
         final IRSignal signal = IRKit.sharedInstance().signals.get(po);
-        Log.d(TAG, "MainActivity:499"+signal);
+        Log.d(TAG, "MainActivity:593行目"+signal);
         if (signal != null) {
             //赤外線送信
             IRKit.sharedInstance().sendSignal(signal, new IRAPIResult() {

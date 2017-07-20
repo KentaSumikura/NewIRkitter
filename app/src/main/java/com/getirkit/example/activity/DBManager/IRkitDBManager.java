@@ -230,6 +230,24 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
     }
 
+    public void ALLDeleteICON(
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            sdb.delete("icon", null, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
     public ArrayList<com.getirkit.example.activity.datatable.DTableICON> selectAllICON(){
         ArrayList<com.getirkit.example.activity.datatable.DTableICON> lst = new ArrayList<com.getirkit.example.activity.datatable.DTableICON>();
         StringBuilder sql = new StringBuilder();
@@ -274,6 +292,24 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
     }
 
+    public void ALLDeleteORDERTBL(
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            sdb.delete("ordertbl", null, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
     public ArrayList<DTableORDERTBL> selectAllORDER(){
         ArrayList<DTableORDERTBL> lst = new ArrayList<DTableORDERTBL>();
         StringBuilder sql = new StringBuilder();
@@ -307,6 +343,24 @@ public class IRkitDBManager extends SQLiteOpenHelper {
 
             //�e�[�u���ɑ}��
             sdb.insert("voice", "", cv);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void ALLDeleteVOICE(
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            sdb.delete("voice", null, null);
 
             //�g�����U�N�V��������
             sdb.setTransactionSuccessful();
@@ -452,6 +506,24 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
     }
 
+    public void ALLDeleteWIFI(
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            sdb.delete("wifi", null, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
     public void updateWIFIAlloff(
 
     ){
@@ -544,25 +616,6 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
     }
 
-    //************** wifi�p�֐� ***************
-    public void AlldeleteWIFI(
-    ){
-        try{
-            //�g�����U�N�V�����J�n
-            sdb.beginTransaction();
-
-            //�}���������e���ݒ�
-            sdb.delete("wifi", null, null);
-
-            //�g�����U�N�V��������
-            sdb.setTransactionSuccessful();
-
-        }finally{
-            //�g�����U�N�V�����I��
-            sdb.endTransaction();
-        }
-    }
-
     public ArrayList<com.getirkit.example.activity.datatable.DTableWIFI> selectAllWIFI(){
         ArrayList<com.getirkit.example.activity.datatable.DTableWIFI> lst = new ArrayList<com.getirkit.example.activity.datatable.DTableWIFI>();
         StringBuilder sql = new StringBuilder();
@@ -596,6 +649,24 @@ public class IRkitDBManager extends SQLiteOpenHelper {
 
             //�e�[�u���ɑ}��
             sdb.insert("weather", "", cv);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void ALLDeleteWEATHER(
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            sdb.delete("weather", null, null);
 
             //�g�����U�N�V��������
             sdb.setTransactionSuccessful();
@@ -741,6 +812,24 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
     }
 
+    public void ALLDeleteGPS(
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            sdb.delete("gps", null, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
     public void updateGPSAlloff(
 
     ){
@@ -866,6 +955,24 @@ public class IRkitDBManager extends SQLiteOpenHelper {
 
             //�e�[�u���ɑ}��
             sdb.insert("temp", "", cv);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void ALLDeleteTEMP(
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            sdb.delete("temp", null, null);
 
             //�g�����U�N�V��������
             sdb.setTransactionSuccessful();
@@ -1011,6 +1118,24 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
     }
 
+    public void ALLDeleteTIME(
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            sdb.delete("time", null, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
     public void updateTIMEAlloff(
 
     ){
@@ -1136,6 +1261,24 @@ public class IRkitDBManager extends SQLiteOpenHelper {
 
             //�e�[�u���ɑ}��
             sdb.insert("angular", "", cv);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void ALLDeleteANGULAR(
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            sdb.delete("angular", null, null);
 
             //�g�����U�N�V��������
             sdb.setTransactionSuccessful();
@@ -1281,6 +1424,24 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
     }
 
+    public void ALLDeleteSPEED(
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            sdb.delete("speed", null, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
     public void updateSPEEDAlloff(
 
     ){
@@ -1406,6 +1567,24 @@ public class IRkitDBManager extends SQLiteOpenHelper {
 
             //�e�[�u���ɑ}��
             sdb.insert("acceleration", "", cv);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void ALLDeleteACCELERATION(
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            sdb.delete("acceleration", null, null);
 
             //�g�����U�N�V��������
             sdb.setTransactionSuccessful();
@@ -1551,6 +1730,24 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
     }
 
+    public void ALLDeleteFINGERPRINT(
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            sdb.delete("fingerprint", null, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
     public void updateFINGERPRINTAlloff(
 
     ){
@@ -1675,6 +1872,24 @@ public class IRkitDBManager extends SQLiteOpenHelper {
 
             //�e�[�u���ɑ}��
             sdb.insert("phonetbl", "", cv);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void ALLDeletePHONETBL(
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            sdb.delete("phonetbl", null, null);
 
             //�g�����U�N�V��������
             sdb.setTransactionSuccessful();
