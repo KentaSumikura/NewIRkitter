@@ -77,10 +77,9 @@ public class MainActivity extends AppCompatActivity
 
         IRkitDBManager manager = new IRkitDBManager(getApplicationContext());
 
-
-
-       // manager.ALLDeleteINFRARED();
-       // manager.AlldeleteWIFI();
+        //manager.ALLDeleteINFRARED();
+        //manager.ALLDeleteWIFI();
+        //manager.ALLDeletePHONETBL();
 
         ArrayList<DTableINFRARED> lst  = new ArrayList<DTableINFRARED>();
         lst = manager.selectAllINFRARED();
