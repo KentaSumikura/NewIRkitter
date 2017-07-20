@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
+import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.getirkit.example.R;
 import com.getirkit.example.activity.DBManager.IRkitDBManager;
 import com.getirkit.example.activity.datatable.DTableINFRARED;
+import com.getirkit.example.activity.datatable.DTableWIFI;
 import com.getirkit.example.admin.Admin;
 
 import java.util.ArrayList;
@@ -33,24 +35,47 @@ public class WifiConf extends AppCompatActivity {
     // 各フィールドの設定
     CallReceiver phoneStateListener;
     TelephonyManager manager;
+    int item;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wifi_conf);
         //db
         IRkitDBManager dbwifi = new IRkitDBManager(getApplicationContext());
-        ArrayList<DTableINFRARED> wifilst  = new ArrayList<DTableINFRARED>();
-        wifilst = dbwifi.selectAllINFRARED();
+        ArrayList<DTableINFRARED> infrailst  = new ArrayList<DTableINFRARED>();
+        ArrayList<DTableWIFI> wifilst  = new ArrayList<DTableWIFI>();
+        infrailst = dbwifi.selectAllINFRARED();
+        wifilst = dbwifi.selectAllWIFI();
+
+        // ボタンを設定
+        Button button = (Button)findViewById(R.id.button7);
+        Button button2 = (Button)findViewById(R.id.settingbtn);
+        final EditText edit = (EditText)findViewById(R.id.editText);
+
+        /*赤外線送信
+        Admin admin = new Admin();
+        admin.Transmission(item);
+
+        for (DTableWIFI wifi: wifilst
+                ) {
+            edit.setText(wifi.getWIFISSID());
+            admin.Transmission((int)wifi.getREDID());
+
+        } */
+
+
+
+
+
         //プルダウンメニュー
         Spinner spinner;
         ArrayList<String> spinnerItems = new ArrayList<>();
-        //ArrayList<ArrayList<String>> spinnerItems = new ArrayList<ArrayList<String>>();
 
-        for (DTableINFRARED infra: wifilst
+        for (DTableINFRARED infra: infrailst
                 ) {
-            //subItems.add(""+infra.getREDID()+infra.getREDPATTERN());
-            //subItems.add(""+infra.getREDID());
-            //spinnerItems.add(subItems);
             spinnerItems.add(infra.getREDPATTERN());
         }
 
@@ -70,14 +95,14 @@ public class WifiConf extends AppCompatActivity {
             //　アイテムが選択された時
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Spinner spinner = (Spinner) parent;
-                int item = spinner.getSelectedItemPosition();
+                item = spinner.getSelectedItemPosition();
 
                 //赤外線送信
                 Admin admin = new Admin();
                 admin.Transmission(item);
 
-                String TAG = "Wifi";
-                Log.d(TAG,""+item);
+               // String TAG = "Wifi";
+               // Log.d(TAG,""+item);
 
             }
 
@@ -101,10 +126,10 @@ public class WifiConf extends AppCompatActivity {
         final Admin admin = new Admin();
 
 
-        // ボタンを設定
-        Button button = (Button)findViewById(R.id.button7);
 
-        // リスナーをボタンに登録
+
+
+        // wifiボタン
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,6 +138,26 @@ public class WifiConf extends AppCompatActivity {
 
             }
         });
+
+        // 設定終了ボタン
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                IRkitDBManager dbwifi = new IRkitDBManager(getApplicationContext());
+
+                //WifSSID情報保存
+                SpannableStringBuilder sb = (SpannableStringBuilder)edit.getText();
+                String wifissid = sb.toString();
+                Log.d("SSID:",wifissid);
+                int posion = item;
+
+                dbwifi.insertWIFI(posion,wifissid);
+
+
+            }
+        });
+
     }
 
     public void getwifissid()
@@ -145,6 +190,8 @@ public class WifiConf extends AppCompatActivity {
         super.onResume();
         manager.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
     }
+
+
 
 }
 
