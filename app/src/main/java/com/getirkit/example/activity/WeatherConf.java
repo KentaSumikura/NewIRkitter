@@ -14,6 +14,8 @@ import android.app.ProgressDialog;
 import android.util.Log;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -49,6 +51,7 @@ public class WeatherConf extends AppCompatActivity{
 
     // Volleyへ渡すタグ
     String tag_json_obj = "json_obj_req";
+    private Switch mSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,21 @@ public class WeatherConf extends AppCompatActivity{
 
         // activity_main.xml にUIコンポーネントを配置する
         setContentView(R.layout.activity_weather_conf);
+
+        mSwitch = (Switch) findViewById(R.id.switch1);
+        mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+                if(b == true){
+                //スイッチを押されたらflagをOFFにする
+
+                }else{
+
+                }
+
+            }
+        });
 
         data = getSharedPreferences("DataStore",MODE_PRIVATE);
 

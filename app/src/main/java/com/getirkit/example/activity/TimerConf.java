@@ -50,6 +50,13 @@ public class TimerConf extends AppCompatActivity {
         set.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //バックグラウンド処理を記載
+                //別クラスつくってIntent でなげる
+                //start とstopつくる
+                //break
+
+
                 // エディットテキストの時間を取得
                 String setText = editTexthour.getText().toString();
                 // 取得したテキストを hour text に張り付ける (時間)

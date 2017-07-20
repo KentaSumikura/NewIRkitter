@@ -25,6 +25,12 @@
         android:entries="@array/list"
         android:textSize="20sp" />
 
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="このトリガーを有効にしますか？" />
+
     <TextView
         android:id="@+id/text_view1"
         android:layout_width="match_parent"

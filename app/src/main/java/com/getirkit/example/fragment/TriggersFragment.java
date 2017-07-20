@@ -60,6 +60,10 @@ public class TriggersFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+
+
         View rootView = inflater.inflate(R.layout.fragment_triggers, container, false);
         ImageButton VoiceButton = (ImageButton)rootView.findViewById(R.id.Voice_button);
         VoiceButton.setOnClickListener(new View.OnClickListener() {
