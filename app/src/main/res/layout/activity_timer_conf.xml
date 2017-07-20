@@ -108,7 +108,7 @@
             android:background="@drawable/frame_style"
             android:elevation="0dp"
             android:hapticFeedbackEnabled="false"
-            android:text="スタート"
+            android:text="タイマースタート"
             android:textColor="#ffffff"
             tools:layout_editor_absoluteX="134dp"
             tools:layout_editor_absoluteY="337dp" />
