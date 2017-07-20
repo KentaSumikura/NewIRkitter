@@ -18,7 +18,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
     private static final String TAG = "IRkitDBManager";
 
     public IRkitDBManager(Context context) {
-        super(context,"irkitter" , null, 2);
+        super(context,"irkitter" , null, 3);
         sdb = this.getWritableDatabase();
         Log.d(TAG, "IRkitDBManagerのコンストラクタが呼ばれました");
     }
@@ -26,7 +26,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
-        if( arg1 == 1 && arg2 == 2 ) {
+        if( arg1 == 2 && arg2 == 3 ) {
             Log.d(TAG, "IRkitterDBOpenHelper.onUpgradeが呼ばれました");
             //それぞれのテーブルを再定義するために現在のテーブルを削除
             arg0.execSQL("drop table if exists ordertbl");
@@ -74,65 +74,76 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         db.execSQL("create table voice("
                 + "     redid INTEGER PRIMARY KEY "
                 + "    ,voice TEXT"
+                + "    ,onoff INTEGER DEFAULT 0"
                 + "    ,FOREIGN KEY (redid) REFERENCES infrared(redid)"
                 + ");");
 
         db.execSQL("create table wifi("
                 + "     redid INTEGER PRIMARY KEY "
                 + "    ,wifissid TEXT"
+                + "    ,onoff INTEGER DEFAULT 0"
                 + "    ,FOREIGN KEY (redid) REFERENCES infrared(redid)"
                 + ");");
 
         db.execSQL("create table weather("
                 + "     redid INTEGER PRIMARY KEY "
                 + "    ,weather TEXT"
+                + "    ,onoff INTEGER DEFAULT 0"
                 + "    ,FOREIGN KEY (redid) REFERENCES infrared(redid)"
                 + ");");
 
         db.execSQL("create table gps("
                 + "     redid INTEGER PRIMARY KEY "
                 + "    ,gps TEXT"
+                + "    ,onoff INTEGER DEFAULT 0"
                 + "    ,FOREIGN KEY (redid) REFERENCES infrared(redid)"
                 + ");");
 
         db.execSQL("create table temp("
                 + "     redid INTEGER PRIMARY KEY "
                 + "    ,temp INTEGER"
+                + "    ,onoff INTEGER DEFAULT 0"
                 + "    ,FOREIGN KEY (redid) REFERENCES infrared(redid)"
                 + ");");
 
         db.execSQL("create table time("
                 + "     redid INTEGER PRIMARY KEY "
                 + "    ,time INTEGER"
+                + "    ,onoff INTEGER DEFAULT 0"
+                + "    ,FOREIGN KEY (redid) REFERENCES infrared(redid)"
                 + ");");
 
         db.execSQL("create table angular("
                 + "     redid INTEGER PRIMARY KEY "
                 + "    ,angular INTEGER"
+                + "    ,onoff INTEGER DEFAULT 0"
                 + "    ,FOREIGN KEY (redid) REFERENCES infrared(redid)"
                 + ");");
 
         db.execSQL("create table speed("
                 + "     redid INTEGER PRIMARY KEY "
                 + "    ,speed INTEGER"
+                + "    ,onoff INTEGER DEFAULT 0"
                 + "    ,FOREIGN KEY (redid) REFERENCES infrared(redid)"
                 + ");");
 
         db.execSQL("create table acceleration("
                 + "     redid INTEGER PRIMARY KEY "
                 + "    ,acceleration INTEGER"
+                + "    ,onoff INTEGER DEFAULT 0"
                 + "    ,FOREIGN KEY (redid) REFERENCES infrared(redid)"
                 + ");");
 
         db.execSQL("create table fingerprint("
                 + "     redid INTEGER PRIMARY KEY "
                 + "    ,fingerprint INTEGER"
+                + "    ,onoff INTEGER DEFAULT 0"
                 + "    ,FOREIGN KEY (redid) REFERENCES infrared(redid)"
                 + ");");
 
         db.execSQL("create table phonetbl("
                 + "     redid INTEGER PRIMARY KEY "
-                + "    ,pflag INTEGER"
+                + "    ,onoff INTEGER DEFAULT 0"
                 + "    ,FOREIGN KEY (redid) REFERENCES infrared(redid)"
                 + ");");
 
@@ -306,6 +317,98 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
     }
 
+    public void updateVOICEAlloff(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("voice", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateVOICEAllon(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("voice", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateVOICEon(
+        long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("voice", cv, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateVOICEoff(
+            long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("voice", cv, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
     public ArrayList<com.getirkit.example.activity.datatable.DTableVOICE> selectAllVOICE(){
         ArrayList<com.getirkit.example.activity.datatable.DTableVOICE> lst = new ArrayList<com.getirkit.example.activity.datatable.DTableVOICE>();
         StringBuilder sql = new StringBuilder();
@@ -317,6 +420,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             com.getirkit.example.activity.datatable.DTableVOICE dt = new com.getirkit.example.activity.datatable.DTableVOICE();
             dt.setREDID(c.getLong(0));
             dt.setVOICE(c.getString(1));
+            dt.setONOFF(c.getLong(2));
             lst.add(dt);
             isEof = c.moveToNext();
         }
@@ -338,6 +442,98 @@ public class IRkitDBManager extends SQLiteOpenHelper {
 
             //�e�[�u���ɑ}��
             sdb.insert("wifi", "", cv);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateWIFIAlloff(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("wifi", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateWIFIAllon(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("wifi", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateWIFIon(
+            long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("wifi", cv, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateWIFIoff(
+            long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("wifi", cv, whereClause, null);
 
             //�g�����U�N�V��������
             sdb.setTransactionSuccessful();
@@ -378,6 +574,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             com.getirkit.example.activity.datatable.DTableWIFI dt = new com.getirkit.example.activity.datatable.DTableWIFI();
             dt.setREDID(c.getLong(0));
             dt.setWIFISSID(c.getString(1));
+            dt.setONOFF(c.getLong(2));
             lst.add(dt);
             isEof = c.moveToNext();
         }
@@ -409,6 +606,98 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
     }
 
+    public void updateWEATHERAlloff(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("weather", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateWEATHERAllon(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("weather", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateWEATHERon(
+            long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("weather", cv, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateWEATHERoff(
+            long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("weather", cv, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
     public ArrayList<com.getirkit.example.activity.datatable.DTableWEATHER> selectAllWEATHER(){
         ArrayList<com.getirkit.example.activity.datatable.DTableWEATHER> lst = new ArrayList<com.getirkit.example.activity.datatable.DTableWEATHER>();
         StringBuilder sql = new StringBuilder();
@@ -420,6 +709,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             com.getirkit.example.activity.datatable.DTableWEATHER dt = new com.getirkit.example.activity.datatable.DTableWEATHER();
             dt.setREDID(c.getLong(0));
             dt.setWEATHER(c.getString(1));
+            dt.setONOFF(c.getLong(2));
             lst.add(dt);
             isEof = c.moveToNext();
         }
@@ -451,6 +741,98 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
     }
 
+    public void updateGPSAlloff(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("gps", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateGPSAllon(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("gps", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateGPSon(
+            long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("gps", cv, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateGPSoff(
+            long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("gps", cv, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
     public ArrayList<com.getirkit.example.activity.datatable.DTableGPS> selectAllGPS(){
         ArrayList<com.getirkit.example.activity.datatable.DTableGPS> lst = new ArrayList<com.getirkit.example.activity.datatable.DTableGPS>();
         StringBuilder sql = new StringBuilder();
@@ -462,6 +844,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             com.getirkit.example.activity.datatable.DTableGPS dt = new com.getirkit.example.activity.datatable.DTableGPS();
             dt.setREDID(c.getLong(0));
             dt.setGPS(c.getString(1));
+            dt.setONOFF(c.getLong(2));
             lst.add(dt);
             isEof = c.moveToNext();
         }
@@ -493,6 +876,98 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
     }
 
+    public void updateTEMPAlloff(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("temp", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateTEMPAllon(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("temp", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateTEMPon(
+            long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("temp", cv, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateTEMPoff(
+            long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("temp", cv, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
     public ArrayList<com.getirkit.example.activity.datatable.DTableTEMP> selectAllTEMP(){
         ArrayList<com.getirkit.example.activity.datatable.DTableTEMP> lst = new ArrayList<com.getirkit.example.activity.datatable.DTableTEMP>();
         StringBuilder sql = new StringBuilder();
@@ -504,6 +979,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             com.getirkit.example.activity.datatable.DTableTEMP dt = new com.getirkit.example.activity.datatable.DTableTEMP();
             dt.setREDID(c.getLong(0));
             dt.setTEMP(c.getLong(1));
+            dt.setONOFF(c.getLong(2));
             lst.add(dt);
             isEof = c.moveToNext();
         }
@@ -535,6 +1011,98 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
     }
 
+    public void updateTIMEAlloff(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("time", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateTIMEAllon(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("time", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateTIMEon(
+            long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("time", cv, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateTIMEoff(
+            long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("time", cv, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
     public ArrayList<com.getirkit.example.activity.datatable.DTableTIME> selectAllTIME(){
         ArrayList<com.getirkit.example.activity.datatable.DTableTIME> lst = new ArrayList<com.getirkit.example.activity.datatable.DTableTIME>();
         StringBuilder sql = new StringBuilder();
@@ -546,6 +1114,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             com.getirkit.example.activity.datatable.DTableTIME dt = new com.getirkit.example.activity.datatable.DTableTIME();
             dt.setREDID(c.getLong(0));
             dt.setTIME(c.getLong(1));
+            dt.setONOFF(c.getLong(2));
             lst.add(dt);
             isEof = c.moveToNext();
         }
@@ -577,6 +1146,98 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
     }
 
+    public void updateANGULARAlloff(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("angular", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateANGULARAllon(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("angular", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateANGULARon(
+            long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("angular", cv, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateANGULARoff(
+            long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("angular", cv, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
     public ArrayList<com.getirkit.example.activity.datatable.DTableANGULAR> selectAllANGULAR(){
         ArrayList<com.getirkit.example.activity.datatable.DTableANGULAR> lst = new ArrayList<com.getirkit.example.activity.datatable.DTableANGULAR>();
         StringBuilder sql = new StringBuilder();
@@ -588,6 +1249,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             com.getirkit.example.activity.datatable.DTableANGULAR dt = new com.getirkit.example.activity.datatable.DTableANGULAR();
             dt.setREDID(c.getLong(0));
             dt.setANGULAR(c.getLong(1));
+            dt.setONOFF(c.getLong(2));
             lst.add(dt);
             isEof = c.moveToNext();
         }
@@ -619,6 +1281,98 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
     }
 
+    public void updateSPEEDAlloff(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("speed", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateSPEEDAllon(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("speed", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateSPEEDon(
+            long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("speed", cv, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateSPEEDoff(
+            long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("speed", cv, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
     public ArrayList<com.getirkit.example.activity.datatable.DTableSPEED> selectAllSPEED(){
         ArrayList<com.getirkit.example.activity.datatable.DTableSPEED> lst = new ArrayList<com.getirkit.example.activity.datatable.DTableSPEED>();
         StringBuilder sql = new StringBuilder();
@@ -630,6 +1384,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             com.getirkit.example.activity.datatable.DTableSPEED dt = new com.getirkit.example.activity.datatable.DTableSPEED();
             dt.setREDID(c.getLong(0));
             dt.setSPEED(c.getLong(1));
+            dt.setONOFF(c.getLong(2));
             lst.add(dt);
             isEof = c.moveToNext();
         }
@@ -661,6 +1416,98 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
     }
 
+    public void updateACCELERATIONAlloff(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("acceleration", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateACCELERATIONAllon(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("acceleration", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateACCELERATIONon(
+            long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("acceleration", cv, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateACCELERATIONoff(
+            long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("acceleration", cv, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
     public ArrayList<com.getirkit.example.activity.datatable.DTableACCELERATION> selectAllACCELERATION(){
         ArrayList<com.getirkit.example.activity.datatable.DTableACCELERATION> lst = new ArrayList<com.getirkit.example.activity.datatable.DTableACCELERATION>();
         StringBuilder sql = new StringBuilder();
@@ -672,6 +1519,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             com.getirkit.example.activity.datatable.DTableACCELERATION dt = new com.getirkit.example.activity.datatable.DTableACCELERATION();
             dt.setREDID(c.getLong(0));
             dt.setACCELERATION(c.getLong(1));
+            dt.setONOFF(c.getLong(2));
             lst.add(dt);
             isEof = c.moveToNext();
         }
@@ -703,6 +1551,98 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
     }
 
+    public void updateFINGERPRINTAlloff(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("fingerprint", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateFINGERPRINTAllon(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("fingerprint", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateFINGERPRINTon(
+            long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("fingerprint", cv, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updateFINGERPRINToff(
+            long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("fingerprint", cv, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
     public ArrayList<com.getirkit.example.activity.datatable.DTableFINGERPRINT> selectAllFINGERPRINT(){
         ArrayList<com.getirkit.example.activity.datatable.DTableFINGERPRINT> lst = new ArrayList<com.getirkit.example.activity.datatable.DTableFINGERPRINT>();
         StringBuilder sql = new StringBuilder();
@@ -714,6 +1654,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             com.getirkit.example.activity.datatable.DTableFINGERPRINT dt = new com.getirkit.example.activity.datatable.DTableFINGERPRINT();
             dt.setREDID(c.getLong(0));
             dt.setFINGERPRINT(c.getLong(1));
+            dt.setONOFF(c.getLong(2));
             lst.add(dt);
             isEof = c.moveToNext();
         }
@@ -746,6 +1687,98 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
     }
 
+    public void updatePHONETBLAlloff(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("phonetbl", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updatePHONETBLAllon(
+
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("phonetbl", null, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updatePHONETBLon(
+            long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+1;
+
+            //�e�[�u���ɑ}��
+            sdb.update("phonetbl", cv, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
+    public void updatePHONETBLoff(
+            long redid
+    ){
+        try{
+            //�g�����U�N�V�����J�n
+            sdb.beginTransaction();
+
+            //�}���������e���ݒ�
+            ContentValues cv = new ContentValues();
+            cv.put("redid", redid);
+            String whereClause = "onoff = "+0;
+
+            //�e�[�u���ɑ}��
+            sdb.update("phonetbl", cv, whereClause, null);
+
+            //�g�����U�N�V��������
+            sdb.setTransactionSuccessful();
+
+        }finally{
+            //�g�����U�N�V�����I��
+            sdb.endTransaction();
+        }
+    }
+
     public ArrayList<com.getirkit.example.activity.datatable.DTablePHONETBL> selectAllPHONETBL(){
         ArrayList<com.getirkit.example.activity.datatable.DTablePHONETBL> lst = new ArrayList<DTablePHONETBL>();
         StringBuilder sql = new StringBuilder();
@@ -756,7 +1789,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         while (isEof) {
             com.getirkit.example.activity.datatable.DTablePHONETBL dt = new com.getirkit.example.activity.datatable.DTablePHONETBL();
             dt.setREDID(c.getLong(0));
-            dt.setPFLAG(c.getLong(1));
+            dt.setONOFF(c.getLong(1));
             lst.add(dt);
             isEof = c.moveToNext();
         }

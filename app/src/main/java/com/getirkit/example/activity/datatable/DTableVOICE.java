@@ -3,6 +3,7 @@ package com.getirkit.example.activity.datatable;
 public class DTableVOICE {
     private long redid;
     private String voice;
+    private long onoff;
  
     public long getREDID(){
         return redid;
@@ -15,5 +16,11 @@ public class DTableVOICE {
     }
     public void setVOICE(String arg){
         voice = arg;
+    }
+    public long getONOFF(){
+        return onoff;
+    }
+    public void setONOFF(long arg){
+        onoff = arg;
     }
 }

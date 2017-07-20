@@ -3,6 +3,7 @@ package com.getirkit.example.activity.datatable;
 public class DTableGPS {
     private long redid;
     private String gps;
+    private long onoff;
  
     public long getREDID(){
         return redid;
@@ -15,5 +16,11 @@ public class DTableGPS {
     }
     public void setGPS(String arg){
         gps = arg;
+    }
+    public long getONOFF(){
+        return onoff;
+    }
+    public void setONOFF(long arg){
+        onoff = arg;
     }
 }

@@ -2,7 +2,7 @@ package com.getirkit.example.activity.datatable;
  
 public class DTablePHONETBL {
     private long redid;
-    private long pflag;
+    private long onoff;
  
     public long getREDID(){
         return redid;
@@ -10,10 +10,10 @@ public class DTablePHONETBL {
     public void setREDID(long arg){
         redid = arg;
     }
-    public long getPFLAG(){
-        return pflag;
+    public long getONOFF(){
+        return onoff;
     }
-    public void setPFLAG(long arg){
-        pflag = arg;
+    public void setONOFF(long arg){
+        onoff = arg;
     }
 }

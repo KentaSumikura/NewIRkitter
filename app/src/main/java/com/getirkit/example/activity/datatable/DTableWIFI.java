@@ -3,6 +3,7 @@ package com.getirkit.example.activity.datatable;
 public class DTableWIFI {
     private long redid;
     private String wifissid;
+    private long onoff;
  
     public long getREDID(){
         return redid;
@@ -15,5 +16,11 @@ public class DTableWIFI {
     }
     public void setWIFISSID(String arg){
         wifissid = arg;
+    }
+    public long getONOFF(){
+        return onoff;
+    }
+    public void setONOFF(long arg){
+        onoff = arg;
     }
 }
