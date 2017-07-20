@@ -12,17 +12,17 @@ import android.telephony.TelephonyManager;
 
 public class CallStateReceiver  extends BroadcastReceiver {
     // 各フィールドの定義
-    TelephonyManager manager;
-    CallReceiver phoneStateListener;
+    //TelephonyManager manager;
+    //CallReceiver phoneStateListener;
     static boolean listener = false;
 
     // intent情報を処理する
     @Override
     public void onReceive(Context context, Intent intent) {
         // PhoneReceiverインスタンスの生成
-        phoneStateListener = new CallReceiver(context);
+        CallReceiver phoneStateListener = new CallReceiver(context);
         // TelephonyManagerインスタンスの生成
-        manager =((TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE));
+        TelephonyManager manager =((TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE));
 
         if(!listener) {
             manager.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);

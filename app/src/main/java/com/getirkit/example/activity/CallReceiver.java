@@ -16,8 +16,8 @@ import java.util.ArrayList;
  * Created by 博之 on 2017/07/11.
  */
 
-public class CallReceiver extends PhoneStateListener {
-    Context context;
+public class CallReceiver extends PhoneStateListener{
+    private Context context;
     //db
     public CallReceiver(Context context) {
         this.context = context;
@@ -26,9 +26,9 @@ public class CallReceiver extends PhoneStateListener {
     // 着信と通話どっちでも行けるように2つあるよ
     @Override
     public void onCallStateChanged(int state, String incomingNumber) {
-        super.onCallStateChanged(state, incomingNumber);
+        //super.onCallStateChanged(state, incomingNumber);
 
-        Admin admin = new Admin();
+
 
         switch (state) {
             //すみくらここらへ
@@ -36,7 +36,17 @@ public class CallReceiver extends PhoneStateListener {
             case TelephonyManager.CALL_STATE_RINGING:
               //  Toast.makeText(context, "着信" + incomingNumber, Toast.LENGTH_LONG).show();
                 //admin.CallTransmission();
-                admin.Transmission(0);
+                Admin admin = new Admin();
+                IRkitDBManager mgr = new IRkitDBManager(context);
+                ArrayList<DTablePHONETBL> phoneilst  = new ArrayList<DTablePHONETBL>();
+                phoneilst = mgr.selectAllPHONETBL();
+                for (DTablePHONETBL phonetbl: phoneilst
+                        ) {
+                    int po = (int) phonetbl.getREDID();
+
+                    admin.Transmission(po);
+                }
+                //admin.Transmission(0);
                 break;
             // 通話処理部分
             case TelephonyManager.CALL_STATE_OFFHOOK:
