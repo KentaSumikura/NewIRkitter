@@ -149,18 +149,18 @@ public class WifiConf extends AppCompatActivity {
         try {
             //MainActivity main = new MainActivity();
             Admin admin = new Admin();
-            String fr = "foreststarwars";
+            //String fr = "foreststarwars";
             WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
             WifiInfo w_info = wifiManager.getConnectionInfo();
             EditText editText1 = (EditText)findViewById(R.id.editText);
             editText1.setText(w_info.getSSID().replace("\"", ""));
-            String wifi = w_info.getSSID();
-            if (fr.equals(w_info.getSSID().replace("\"", ""))){
+            //String wifi = w_info.getSSID();
+            /*if (fr.equals(w_info.getSSID().replace("\"", ""))){
                 //main.onSelectSignalActionSend();
                // admin.Transmission();
             }else{
                 editText1.setText("dame");
-            }
+            }*/
             //Toast.makeText(this, w_info.getSSID(), Toast.LENGTH_LONG).show();
         } catch (ActivityNotFoundException e) {
             // エラー表示

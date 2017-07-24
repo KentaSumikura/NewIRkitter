@@ -1,7 +1,9 @@
 package com.getirkit.example.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -19,6 +21,7 @@ import android.widget.Toast;
 //import com.getirkit.example.adapter.TriggerListAdapter;
 import com.getirkit.example.activity.DBManager.IRkitDBManager;
 import com.getirkit.example.activity.datatable.DTableINFRARED;
+import com.getirkit.example.activity.ConnectivityManager;
 import com.getirkit.example.activity.datatable.DTablePHONETBL;
 import com.getirkit.example.activity.datatable.DTableWIFI;
 import com.getirkit.example.adapter.TriggerListAdapter;
@@ -74,7 +77,8 @@ public class MainActivity extends AppCompatActivity
     private CharSequence mTitle;
 
     // 各フィールドの設定
-    CallReceiver phoneStateListener;
+    //ConnectivityManager WifiphoneStateListener;
+    CallReceiver CallphoneStateListener;
     TelephonyManager manager;
 
 
@@ -84,7 +88,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         // PhoneReceiverインスタンスの生成
-        phoneStateListener = new CallReceiver(this);
+        CallphoneStateListener = new CallReceiver(this);
+        //WifiphoneStateListener = new ConnectivityManager(this);
         // TelephonyManagerインスタンスの生成(Context.TELEPHONY_SERVICEを指定)
         manager = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE));
 
@@ -92,14 +97,14 @@ public class MainActivity extends AppCompatActivity
 
         //manager.ALLDeleteINFRARED();
         //manager.ALLDeleteWIFI();
-        manager.ALLDeletePHONETBL();
+        //manager.ALLDeletePHONETBL();
 
-        ArrayList<DTableINFRARED> lst  = new ArrayList<DTableINFRARED>();
-        lst = manager.selectAllINFRARED();
-        for (DTableINFRARED infra: lst
+        ArrayList<DTablePHONETBL> lst  = new ArrayList<DTablePHONETBL>();
+        lst = manager.selectAllPHONETBL();
+        for (DTablePHONETBL infra: lst
              ) {
-            Log.d(TAG,"MainActivity:93行目 "+infra.getREDID());
-            Log.d(TAG,infra.getREDPATTERN());
+            Log.d(TAG,"MainActivity:106行目 "+infra.getREDID());
+            Log.d(TAG,""+infra.getREDID()+" , "+infra.getONOFF());
         }
         manager.close();
 
@@ -184,8 +189,9 @@ public class MainActivity extends AppCompatActivity
         // clientkeyをまだ取得していない場合は取得する
         irkit.registerClient();
 
-        manager.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
-        manager.listen(phoneStateListener, PhoneStateListener.LISTEN_DATA_CONNECTION_STATE);
+
+        manager.listen(CallphoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
+        //manager.listen(WifiphoneStateListener, PhoneStateListener.LISTEN_DATA_CONNECTION_STATE);
 
     }
 

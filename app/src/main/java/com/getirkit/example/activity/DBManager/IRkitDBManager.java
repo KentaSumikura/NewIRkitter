@@ -329,12 +329,13 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         return lst;
     }
     //************** voice�p�֐� ***************
-    public void insertVOICE(
+    public long insertVOICE(
             long redid
             ,String voice
     ){
         try{
             //�g�����U�N�V�����J�n
+            long retn = 0;
             sdb.beginTransaction();
 
             //�}���������e���ݒ�
@@ -343,10 +344,12 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             cv.put("voice", voice);
 
             //�e�[�u���ɑ}��
-            sdb.insert("voice", "", cv);
+            retn = sdb.insert("voice", "", cv);
 
             //�g�����U�N�V��������
             sdb.setTransactionSuccessful();
+
+            return retn;
 
         }finally{
             //�g�����U�N�V�����I��
@@ -655,11 +658,12 @@ public class IRkitDBManager extends SQLiteOpenHelper {
     }
 
     //************** weather�p�֐� ***************
-    public void insertWEATHER(
+    public long insertWEATHER(
             long redid
             ,String weather
     ){
         try{
+            long retn = 0;
             //�g�����U�N�V�����J�n
             sdb.beginTransaction();
 
@@ -669,10 +673,12 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             cv.put("weather", weather);
 
             //�e�[�u���ɑ}��
-            sdb.insert("weather", "", cv);
+            retn = sdb.insert("weather", "", cv);
 
             //�g�����U�N�V��������
             sdb.setTransactionSuccessful();
+
+            return retn;
 
         }finally{
             //�g�����U�N�V�����I��
@@ -808,11 +814,12 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         return lst;
     }
     //************** gps�p�֐� ***************
-    public void insertGPS(
+    public long insertGPS(
             long redid
             ,String gps
     ){
         try{
+            long retn = 0;
             //�g�����U�N�V�����J�n
             sdb.beginTransaction();
 
@@ -822,10 +829,11 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             cv.put("gps", gps);
 
             //�e�[�u���ɑ}��
-            sdb.insert("gps", "", cv);
+            retn = sdb.insert("gps", "", cv);
 
             //�g�����U�N�V��������
             sdb.setTransactionSuccessful();
+            return retn;
 
         }finally{
             //�g�����U�N�V�����I��
@@ -961,11 +969,12 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         return lst;
     }
     //************** temp�p�֐� ***************
-    public void insertTEMP(
+    public long insertTEMP(
             long redid
             ,long temp
     ){
         try{
+            long retn = 0;
             //�g�����U�N�V�����J�n
             sdb.beginTransaction();
 
@@ -975,10 +984,11 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             cv.put("temp", temp);
 
             //�e�[�u���ɑ}��
-            sdb.insert("temp", "", cv);
+            retn = sdb.insert("temp", "", cv);
 
             //�g�����U�N�V��������
             sdb.setTransactionSuccessful();
+            return retn;
 
         }finally{
             //�g�����U�N�V�����I��
@@ -1114,11 +1124,12 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         return lst;
     }
     //************** time�p�֐� ***************
-    public void insertTIME(
+    public long insertTIME(
             long redid
             ,long time
     ){
         try{
+            long retn = 0;
             //�g�����U�N�V�����J�n
             sdb.beginTransaction();
 
@@ -1128,10 +1139,11 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             cv.put("time", time);
 
             //�e�[�u���ɑ}��
-            sdb.insert("time", "", cv);
+            retn = sdb.insert("time", "", cv);
 
             //�g�����U�N�V��������
             sdb.setTransactionSuccessful();
+            return retn;
 
         }finally{
             //�g�����U�N�V�����I��
@@ -1267,11 +1279,12 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         return lst;
     }
     //************** angular�p�֐� ***************
-    public void insertANGULAR(
+    public long insertANGULAR(
             long redid
             ,long angular
     ){
         try{
+            long retn = 0;
             //�g�����U�N�V�����J�n
             sdb.beginTransaction();
 
@@ -1281,10 +1294,11 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             cv.put("angular", angular);
 
             //�e�[�u���ɑ}��
-            sdb.insert("angular", "", cv);
+            retn = sdb.insert("angular", "", cv);
 
             //�g�����U�N�V��������
             sdb.setTransactionSuccessful();
+            return retn;
 
         }finally{
             //�g�����U�N�V�����I��
@@ -1420,11 +1434,12 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         return lst;
     }
     //************** speed�p�֐� ***************
-    public void insertSPEED(
+    public long insertSPEED(
             long redid
             ,long speed
     ){
         try{
+            long retn = 0;
             //�g�����U�N�V�����J�n
             sdb.beginTransaction();
 
@@ -1434,10 +1449,11 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             cv.put("speed", speed);
 
             //�e�[�u���ɑ}��
-            sdb.insert("speed", "", cv);
+            retn = sdb.insert("speed", "", cv);
 
             //�g�����U�N�V��������
             sdb.setTransactionSuccessful();
+            return retn;
 
         }finally{
             //�g�����U�N�V�����I��
@@ -1573,11 +1589,12 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         return lst;
     }
     //************** acceleration�p�֐� ***************
-    public void insertACCELERATION(
+    public long insertACCELERATION(
             long redid
             ,long acceleration
     ){
         try{
+            long retn = 0;
             //�g�����U�N�V�����J�n
             sdb.beginTransaction();
 
@@ -1587,10 +1604,11 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             cv.put("acceleration", acceleration);
 
             //�e�[�u���ɑ}��
-            sdb.insert("acceleration", "", cv);
+            retn = sdb.insert("acceleration", "", cv);
 
             //�g�����U�N�V��������
             sdb.setTransactionSuccessful();
+            return retn;
 
         }finally{
             //�g�����U�N�V�����I��
@@ -1726,11 +1744,12 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         return lst;
     }
     //************** fingerprint�p�֐� ***************
-    public void insertFINGERPRINT(
+    public long insertFINGERPRINT(
             long redid
             ,long fingerprint
     ){
         try{
+            long retn = 0;
             //�g�����U�N�V�����J�n
             sdb.beginTransaction();
 
@@ -1740,10 +1759,11 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             cv.put("fingerprint", fingerprint);
 
             //�e�[�u���ɑ}��
-            sdb.insert("fingerprint", "", cv);
+            retn = sdb.insert("fingerprint", "", cv);
 
             //�g�����U�N�V��������
             sdb.setTransactionSuccessful();
+            return retn;
 
         }finally{
             //�g�����U�N�V�����I��

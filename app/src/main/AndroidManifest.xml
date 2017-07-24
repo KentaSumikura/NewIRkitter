@@ -14,10 +14,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
-
-
 
     <application
         android:name=".activity.AppController"
@@ -72,19 +68,26 @@
         <activity android:name=".activity.WifiConf" />
         <activity android:name=".activity.CallConf" />
         <activity android:name=".activity.WeatherConf" />
-        <activity android:name=".activity.TimerConf" />
-        <activity android:name=".Settings.WifiSettingActivity" />
         <!-- 着信などを制御するBroadcastReceiver -->
         <receiver android:name=".activity.CallStateReceiver">
-
             <receiver android:name=".activity.CallReceiver" />
 
             <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".activity.AlarmBroadcastReceiver"
-            android:process=":remote" />
+        <receiver
+            android:name=".activity.WifiReceiver"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="android.net.wifi.STATE_CHANGE" >
+                </action>
+            </intent-filter>
+        </receiver>
+
+
+        <activity android:name=".activity.TimerConf" />
+        <activity android:name=".Settings.WifiSettingActivity"></activity>
     </application>
 
 </manifest>

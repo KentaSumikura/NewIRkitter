@@ -12,6 +12,7 @@ import android.support.v7.app.AlertDialog;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.getirkit.example.activity.DBManager.IRkitDBManager;
 import com.getirkit.example.activity.datatable.DTablePHONETBL;
@@ -41,7 +42,7 @@ public class ConnectivityManager extends PhoneStateListener {
         //super.onDataConnectionStateChanged(state);
         switch (state) {
             case TelephonyManager.DATA_DISCONNECTED:
-
+                Log.d(TAG,"回線接続できてない");
                 break;
 
             case TelephonyManager.DATA_CONNECTED:
@@ -79,5 +80,8 @@ public class ConnectivityManager extends PhoneStateListener {
                 break;
 
         }
+
+        super.onDataConnectionStateChanged(state);
+
     }
 }
