@@ -38,6 +38,12 @@
             android:gravity="center_horizontal"
             android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
             <EditText
                 android:id="@+id/hour"
                 android:layout_width="201dp"
@@ -54,7 +60,7 @@
 
             <TextView
                 android:id="@+id/hour_text"
-                android:layout_width="match_parent"
+                android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
@@ -62,6 +68,12 @@
                 android:textSize="30sp"
                 tools:layout_editor_absoluteX="134dp"
                 tools:layout_editor_absoluteY="180dp" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
@@ -69,6 +81,12 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
             <EditText
                 android:id="@+id/minute"
@@ -84,7 +102,7 @@
 
             <TextView
                 android:id="@+id/minute_text"
-                android:layout_width="match_parent"
+                android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_toEndOf="@+id/hour_text"
                 android:layout_toRightOf="@+id/hour_text"
@@ -94,6 +112,12 @@
                 android:textSize="30sp"
                 tools:layout_editor_absoluteX="134dp"
                 tools:layout_editor_absoluteY="273dp" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
         </LinearLayout>
 
