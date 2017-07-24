@@ -52,7 +52,7 @@ public class TimerConf extends AppCompatActivity {
         infrailst = dbwifi.selectAllINFRARED();
         //DBボタン
         Button button = (Button) findViewById(R.id.settingbtn);
-        Button buttondel = (Button) findViewById(R.id.settingdel);
+        Button buttondel = (Button) findViewById(R.id.btndel);
 
         //プルダウンメニュー
         Spinner spinner;
