@@ -41,16 +41,17 @@ public class CallConf extends AppCompatActivity {
 
         //db
         IRkitDBManager dbwifi = new IRkitDBManager(getApplicationContext());
-        ArrayList<DTableINFRARED> infrailst  = new ArrayList<DTableINFRARED>();
+        ArrayList<DTableINFRARED> infrailst = new ArrayList<DTableINFRARED>();
         infrailst = dbwifi.selectAllINFRARED();
 
-        Button button2 = (Button)findViewById(R.id.settingbtn);
+        Button button2 = (Button) findViewById(R.id.settingbtn);
+        Button buttondel = (Button) findViewById(R.id.settingdel);
 
         //プルダウンメニュー
         Spinner spinner;
         ArrayList<String> spinnerItems = new ArrayList<>();
 
-        for (DTableINFRARED infra: infrailst
+        for (DTableINFRARED infra : infrailst
                 ) {
 
             spinnerItems.add(infra.getREDPATTERN());
@@ -58,11 +59,11 @@ public class CallConf extends AppCompatActivity {
         }
 
 
-        spinner = (Spinner)findViewById(R.id.spinner);
+        spinner = (Spinner) findViewById(R.id.spinner);
 
         // ArrayAdapter
         ArrayAdapter<String> adapter
-                = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,spinnerItems);
+                = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerItems);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -103,18 +104,32 @@ public class CallConf extends AppCompatActivity {
 
                 long flag = dbwifi.insertPHONETBL(posion);
 
-                if(flag == 0) {
+                if (flag == 0) {
                     Toast toast = Toast.makeText(CallConf.this, "登録しました", Toast.LENGTH_LONG);
                     toast.show();
-                }else {
+                } else {
                     Toast toast = Toast.makeText(CallConf.this, "既に登録されています", Toast.LENGTH_LONG);
                     toast.show();
                 }
             }
         });
 
+        // 設定削除ボタン
+        buttondel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                IRkitDBManager phonetbl = new IRkitDBManager(getApplicationContext());
+
+                phonetbl.ALLDeletePHONETBL();
+
+                Toast toast = Toast.makeText(CallConf.this, "設定情報を削除しました", Toast.LENGTH_LONG);
+                toast.show();
+            }
+
+        });
     }
+
 
     @Override
     protected void onResume() {
