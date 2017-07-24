@@ -10,11 +10,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.content.ActivityNotFoundException;
+import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,9 +38,10 @@ public class VoiceConf extends AppCompatActivity {
     public static final String TAG = "IRkitterDBOpenHelper";
 
     private Context context;
-
+    IRkitDBManager dbwifi = new IRkitDBManager(getApplicationContext());
     int item;
     String Voice;
+    Admin admin = new Admin();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +50,14 @@ public class VoiceConf extends AppCompatActivity {
 
 
         //dbセットアップ
-        IRkitDBManager dbwifi = new IRkitDBManager(getApplicationContext());
+        //IRkitDBManager dbwifi = new IRkitDBManager(getApplicationContext());
         ArrayList<DTableINFRARED> infrailst = new ArrayList<DTableINFRARED>();
         infrailst = dbwifi.selectAllINFRARED();
         //ボタンセットアップ
         Button button2 = (Button) findViewById(R.id.button2);
         Button button = (Button)findViewById(R.id.button);
+        final EditText edit = (EditText)findViewById(R.id.editText);
+
 
         //プルダウンメニュー
         Spinner spinner;
@@ -99,13 +104,14 @@ public class VoiceConf extends AppCompatActivity {
 
                 IRkitDBManager dbwifi = new IRkitDBManager(getApplicationContext());
 
-                //電話情報保存
+                //赤外線のポジション情報
                 int posion = item;
 
                 //long flag = dbwifi.insertVOICE(posion,Voice);
 
-                TextView textView = (TextView) findViewById(R.id.textView5);
-                Voice = textView.getText().toString();
+                //合言葉保存
+                SpannableStringBuilder sb = (SpannableStringBuilder)edit.getText();
+                Voice = sb.toString();
 
                 dbwifi.insertVOICE(posion,Voice);
 
@@ -140,9 +146,26 @@ public class VoiceConf extends AppCompatActivity {
                     RecognizerIntent.EXTRA_RESULTS);
             // 取得した文字列を結合
             String resultsString = "";
+            resultsString += results.get(0);
 
             TextView textView = (TextView) findViewById(R.id.textView5);
             textView.setText(resultsString);
+
+            ArrayList<DTableVOICE> voiceilst  = new ArrayList<DTableVOICE>();
+            voiceilst = dbwifi.selectAllVOICE();
+            for (DTableVOICE voicetbl: voiceilst
+                    ) {
+                if (resultsString == voicetbl.getVOICE()){
+
+                    int po = (int) voicetbl.getREDID();
+                    admin.Transmission(po);
+                }
+
+            }
+            dbwifi.close();
+
+
+
         }
 
         super.onActivityResult(requestCode, resultCode, data);
