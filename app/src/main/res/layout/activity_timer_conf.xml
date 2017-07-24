@@ -9,11 +9,11 @@
 
 
     <LinearLayout
-        android:layout_width="118dp"
-        android:layout_height="495dp"
+        android:layout_width="407dp"
+        android:layout_height="602dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="-1dp"
+        tools:layout_editor_absoluteX="2dp"
         android:id="@+id/linearLayout">
 
         <Button
@@ -37,14 +37,21 @@
             tools:layout_editor_absoluteY="324dp" />
 
 
+        <TextView
+            android:id="@+id/text_view"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
+
         <EditText
             android:id="@+id/month"
-            android:layout_width="201dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:layout_above="@+id/set"
             android:layout_alignEnd="@+id/set"
             android:layout_alignRight="@+id/set"
-            android:layout_weight="1"
+            android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
             android:inputType="number"
             app:layout_constraintHorizontal_bias="0.059"
@@ -54,12 +61,12 @@
 
         <EditText
             android:id="@+id/date"
-            android:layout_width="201dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:layout_above="@+id/set"
             android:layout_alignEnd="@+id/set"
             android:layout_alignRight="@+id/set"
-            android:layout_weight="1"
+            android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
             android:inputType="number"
             app:layout_constraintHorizontal_bias="0.059"
@@ -69,12 +76,12 @@
 
         <EditText
             android:id="@+id/hour"
-            android:layout_width="201dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:layout_above="@+id/set"
             android:layout_alignEnd="@+id/set"
             android:layout_alignRight="@+id/set"
-            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
             android:gravity="center_horizontal"
             android:inputType="number"
             app:layout_constraintHorizontal_bias="0.059"
@@ -84,12 +91,12 @@
 
         <EditText
             android:id="@+id/minute"
-            android:layout_width="201dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:layout_above="@+id/set"
             android:layout_alignEnd="@+id/set"
             android:layout_alignRight="@+id/set"
-            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
             android:gravity="center_horizontal"
             android:inputType="number"
             app:layout_constraintHorizontal_bias="0.059"
@@ -97,45 +104,47 @@
             app:layout_constraintRight_toRightOf="parent"
             tools:layout_editor_absoluteY="190dp" />
 
-
-        <TextView
-            android:id="@+id/text_view"
+        <Spinner
+            android:id="@+id/spinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
+            android:layout_height="42dp"
+            android:layout_margin="20dp"
+            android:layout_marginBottom="154dp"
+            android:background="#fff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.777" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btndel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:text="設定削除"
+                app:layout_constraintLeft_toRightOf="@+id/settingbtn"
+                tools:layout_editor_absoluteY="447dp" />
+
+            <Button
+                android:id="@+id/settingbtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="22dp"
+                android:layout_weight="1"
+                android:text="設定保存"
+                app:layout_constraintLeft_toRightOf="@+id/linearLayout"
+                tools:layout_editor_absoluteY="447dp" />
+        </LinearLayout>
+
+
     </LinearLayout>
-
-    <Button
-        android:id="@+id/settingbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="設定保存"
-        tools:layout_editor_absoluteY="447dp"
-        app:layout_constraintLeft_toRightOf="@+id/linearLayout"
-        android:layout_marginLeft="22dp" />
-
-    <Button
-        android:id="@+id/btndel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="設定削除"
-        tools:layout_editor_absoluteY="447dp"
-        app:layout_constraintLeft_toRightOf="@+id/settingbtn"
-        android:layout_marginLeft="8dp" />
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="237dp"
-        android:layout_height="42dp"
-        android:layout_margin="20dp"
-        android:background="#fff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        android:layout_marginBottom="154dp"
-        app:layout_constraintVertical_bias="0.777" />
 
 </android.support.constraint.ConstraintLayout>
