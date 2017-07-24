@@ -41,7 +41,7 @@ public class VoiceConf extends AppCompatActivity {
    // IRkitDBManager dbwifi = new IRkitDBManager(getApplicationContext());
     int item;
     String Voice;
-    Admin admin = new Admin();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -168,7 +168,7 @@ public class VoiceConf extends AppCompatActivity {
             textView.setText(resultsString);
 
             IRkitDBManager dbwifi = new IRkitDBManager(getApplicationContext());
-
+            Admin admin = new Admin();
             ArrayList<DTableVOICE> voiceilst  = new ArrayList<DTableVOICE>();
             voiceilst = dbwifi.selectAllVOICE();
             for (DTableVOICE voicetbl: voiceilst
