@@ -15,6 +15,12 @@ import android.widget.Toast;
 import android.util.Log;
 
 import com.getirkit.example.R;
+import com.getirkit.example.activity.DBManager.IRkitDBManager;
+import com.getirkit.example.activity.datatable.DTablePHONETBL;
+import com.getirkit.example.activity.datatable.DTableTIME;
+import com.getirkit.example.admin.Admin;
+
+import java.util.ArrayList;
 
 public class AlarmBroadcastReceiver extends BroadcastReceiver{
 
@@ -47,7 +53,19 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver{
                 // 通知をタップした時にMainActivityを立ち上げる
                 .setContentIntent(pendingIntent)
                 .build();
+        //db
+        Admin admin = new Admin();
+        IRkitDBManager mgr = new IRkitDBManager(context);
 
+        ArrayList<DTableTIME> phoneilst  = new ArrayList<DTableTIME>();
+        phoneilst = mgr.selectAllTIME();
+        for (DTableTIME phonetbl: phoneilst
+                ) {
+            int po = (int) phonetbl.getREDID();
+
+            admin.Transmission(po);
+        }
+        //ここまで追記テスト
 
         // 古い通知を削除
         notificationManager.cancelAll();

@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
 import android.app.AlarmManager;
@@ -114,6 +115,23 @@ public class TimerConf extends AppCompatActivity {
                 //}
             }
         });
+
+        // 設定削除ボタン
+        buttondel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                IRkitDBManager phonetbl = new IRkitDBManager(getApplicationContext());
+
+                phonetbl.ALLDeleteTIME();
+
+                Toast toast = Toast.makeText(TimerConf.this, "設定情報を削除しました", Toast.LENGTH_LONG);
+                toast.show();
+            }
+
+        });
+
+
 
 
 
