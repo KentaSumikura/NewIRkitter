@@ -4,6 +4,7 @@ package com.getirkit.example.activity.DBManager;
         import android.content.Context;
         import android.database.Cursor;
         import android.database.sqlite.SQLiteDatabase;
+        import android.database.sqlite.SQLiteException;
         import android.database.sqlite.SQLiteOpenHelper;
         import android.util.Log;
 
@@ -161,7 +162,7 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             cv.put("redpattern", redpattern);
 
             //�e�[�u���ɑ}��
-            sdb.insert("infrared", "", cv);
+            long n = sdb.insert("infrared", "", cv);
 
             //�g�����U�N�V��������
             sdb.setTransactionSuccessful();
@@ -633,6 +634,26 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
         return lst;
     }
+
+    public ArrayList<com.getirkit.example.activity.datatable.DTableWIFI> selectWIFI(String ssid){
+        ArrayList<com.getirkit.example.activity.datatable.DTableWIFI> lst = new ArrayList<com.getirkit.example.activity.datatable.DTableWIFI>();
+        StringBuilder sql = new StringBuilder();
+        sql.append(" SELECT *");
+        sql.append(" FROM wifi");
+        sql.append(" WHERE wifissid = "+ ssid + ";");
+        Cursor c = sdb.rawQuery(sql.toString(), null);
+        boolean isEof = c.moveToFirst();
+        while (isEof) {
+            com.getirkit.example.activity.datatable.DTableWIFI dt = new com.getirkit.example.activity.datatable.DTableWIFI();
+            dt.setREDID(c.getLong(0));
+            dt.setWIFISSID(c.getString(1));
+            dt.setONOFF(c.getLong(2));
+            lst.add(dt);
+            isEof = c.moveToNext();
+        }
+        return lst;
+    }
+
     //************** weather�p�֐� ***************
     public void insertWEATHER(
             long redid
@@ -1859,10 +1880,11 @@ public class IRkitDBManager extends SQLiteOpenHelper {
     }
 
     //************** phonetbl�p�֐� ***************
-    public void insertPHONETBL(
+    public long insertPHONETBL(
             long redid
     ){
         try{
+            long retn = 0;
             //�g�����U�N�V�����J�n
             sdb.beginTransaction();
 
@@ -1871,15 +1893,18 @@ public class IRkitDBManager extends SQLiteOpenHelper {
             cv.put("redid", redid);
 
             //�e�[�u���ɑ}��
-            sdb.insert("phonetbl", "", cv);
+             retn = sdb.insert("phonetbl", "", cv);
 
             //�g�����U�N�V��������
             sdb.setTransactionSuccessful();
+
+            return retn;
 
         }finally{
             //�g�����U�N�V�����I��
             sdb.endTransaction();
         }
+
     }
 
     public void ALLDeletePHONETBL(

@@ -47,6 +47,7 @@ public class CallReceiver extends PhoneStateListener{
                     admin.Transmission(po);
                 }
                 //admin.Transmission(0);
+                mgr.close();
                 break;
             // 通話処理部分
             case TelephonyManager.CALL_STATE_OFFHOOK:
