@@ -172,7 +172,7 @@ public class TimerConf extends AppCompatActivity {
         editTextminute = (EditText) findViewById(R.id.minute);
 
 
-        // 日時を指定したアラーム
+        // 日時を指定したアラームあ
         button3 = (Button) this.findViewById(R.id.button3);
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
