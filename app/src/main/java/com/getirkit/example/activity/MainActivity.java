@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity
             Log.d(TAG,"MainActivity:93行目 "+infra.getREDID());
             Log.d(TAG,infra.getREDPATTERN());
         }
+        manager.close();
 
         //Intent intent = new Intent(this, WifiConf.class);
         //startActivity(intent);
@@ -184,6 +185,7 @@ public class MainActivity extends AppCompatActivity
         irkit.registerClient();
 
         manager.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
+        manager.listen(phoneStateListener, PhoneStateListener.LISTEN_DATA_CONNECTION_STATE);
 
     }
 
@@ -345,6 +347,7 @@ public class MainActivity extends AppCompatActivity
                 IRSignal signal = args.getParcelable("signal");
                 IRkitDBManager manager = new IRkitDBManager(this);
                 manager.insertINFRARED(signal.getName());
+                manager.close();
 
                 if (signal == null) {
                     Log.e(TAG, "failed to receive signal");
