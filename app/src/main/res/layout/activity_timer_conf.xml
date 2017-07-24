@@ -9,170 +9,100 @@
 
 
     <LinearLayout
-        android:layout_width="398dp"
-        android:layout_height="595dp"
-        android:gravity="center_horizontal"
+        android:layout_width="118dp"
+        android:layout_height="495dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="0dp">
-
-        <TextView
-            android:id="@+id/text_text"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignLeft="@+id/hour"
-            android:layout_alignStart="@+id/hour"
-            android:layout_below="@+id/hour_text"
-            android:layout_weight="1"
-
-            android:gravity="center_horizontal"
-            android:text="時間を設定してください。"
-            android:textSize="30sp"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="49dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <EditText
-                android:id="@+id/hour"
-                android:layout_width="201dp"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/set"
-                android:layout_alignEnd="@+id/set"
-                android:layout_alignRight="@+id/set"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                app:layout_constraintHorizontal_bias="0.059"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                tools:layout_editor_absoluteY="190dp" />
-
-            <TextView
-                android:id="@+id/hour_text"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="時"
-                android:textSize="30sp"
-                tools:layout_editor_absoluteX="134dp"
-                tools:layout_editor_absoluteY="180dp" />
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <EditText
-                android:id="@+id/minute"
-                android:layout_width="201dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/text_text"
-                android:layout_toEndOf="@+id/minute_text"
-                android:layout_toRightOf="@+id/minute_text"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="273dp" />
-
-            <TextView
-                android:id="@+id/minute_text"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_toEndOf="@+id/hour_text"
-                android:layout_toRightOf="@+id/hour_text"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="分"
-                android:textSize="30sp"
-                tools:layout_editor_absoluteX="134dp"
-                tools:layout_editor_absoluteY="273dp" />
-
-            <TextView
-                android:id="@+id/textView16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-        </LinearLayout>
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
 
         <Button
-            android:id="@+id/set"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/anthr"
-            android:layout_toEndOf="@+id/minute"
-            android:layout_toRightOf="@+id/minute"
-            android:layout_weight="1"
-            android:background="@drawable/frame_style"
-            android:elevation="0dp"
-            android:hapticFeedbackEnabled="false"
-            android:text="タイマースタート"
-            android:textColor="#ffffff"
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="Set Alarm 2"
+            android:textSize="20sp"
             tools:layout_editor_absoluteX="134dp"
-            tools:layout_editor_absoluteY="337dp" />
+            tools:layout_editor_absoluteY="218dp" />
 
-        <TextView
-            android:id="@+id/anthr"
+        <Button
+            android:id="@+id/button2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/conbr"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_weight="1"
-            android:text=" "
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="385dp" />
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="Cancel Alarm 1"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="134dp"
+            tools:layout_editor_absoluteY="324dp" />
 
-        <TextView
-            android:id="@+id/conbr"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/date"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_weight="1"
-            android:text=" "
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="414dp" />
 
-        <TextView
+        <EditText
+            android:id="@+id/month"
+            android:layout_width="201dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/set"
+            android:layout_alignEnd="@+id/set"
+            android:layout_alignRight="@+id/set"
+            android:inputType="number"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            app:layout_constraintHorizontal_bias="0.059"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_editor_absoluteY="190dp" />
+
+        <EditText
             android:id="@+id/date"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:layout_width="201dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/set"
+            android:layout_alignEnd="@+id/set"
+            android:layout_alignRight="@+id/set"
+            android:inputType="number"
             android:layout_weight="1"
-            android:text=" "
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="440dp" />
+            android:gravity="center_horizontal"
+            app:layout_constraintHorizontal_bias="0.059"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_editor_absoluteY="190dp" />
 
+        <EditText
+            android:id="@+id/hour"
+            android:layout_width="201dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/set"
+            android:layout_alignEnd="@+id/set"
+            android:layout_alignRight="@+id/set"
+            android:inputType="number"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            app:layout_constraintHorizontal_bias="0.059"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_editor_absoluteY="190dp" />
+
+        <EditText
+            android:id="@+id/minute"
+            android:layout_width="201dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/set"
+            android:layout_alignEnd="@+id/set"
+            android:layout_alignRight="@+id/set"
+            android:inputType="number"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            app:layout_constraintHorizontal_bias="0.059"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_editor_absoluteY="190dp" />
+
+
+        <TextView
+            android:id="@+id/text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
     </LinearLayout>
 
 
