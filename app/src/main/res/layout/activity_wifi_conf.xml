@@ -64,7 +64,7 @@
         android:id="@+id/settingbtn"
         android:layout_width="200dp"
         android:layout_height="48dp"
-        android:background="@drawable/frame_style"
+        android:background="@drawable/flame_style3"
         android:text="設定終了"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"

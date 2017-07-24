@@ -21,6 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            android:background="@drawable/frame_style"
             android:text="タイマーをセット"
             android:textSize="20sp"
             tools:layout_editor_absoluteX="134dp"
@@ -31,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            android:background="@drawable/frame_style"
             android:text="タイマーをキャンセル"
             android:textSize="20sp"
             tools:layout_editor_absoluteX="134dp"
@@ -44,72 +46,140 @@
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp" />
 
-        <EditText
-            android:id="@+id/month"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_above="@+id/set"
-            android:layout_alignEnd="@+id/set"
-            android:layout_alignRight="@+id/set"
-            android:layout_marginTop="10dp"
-            android:gravity="center_horizontal"
-            android:inputType="number"
-            app:layout_constraintHorizontal_bias="0.059"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            tools:layout_editor_absoluteY="190dp" />
+            android:layout_height="50dp"
+            android:layout_marginLeft="130dp"
+            android:layout_marginRight="130dp"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/date"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_above="@+id/set"
-            android:layout_alignEnd="@+id/set"
-            android:layout_alignRight="@+id/set"
-            android:layout_marginTop="10dp"
-            android:gravity="center_horizontal"
-            android:inputType="number"
-            app:layout_constraintHorizontal_bias="0.059"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            tools:layout_editor_absoluteY="190dp" />
+            <EditText
+                android:id="@+id/month"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_above="@+id/set"
+                android:layout_alignEnd="@+id/set"
+                android:layout_alignRight="@+id/set"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:inputType="number"
+                app:layout_constraintHorizontal_bias="0.059"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:layout_editor_absoluteY="190dp" />
 
-        <EditText
-            android:id="@+id/hour"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_above="@+id/set"
-            android:layout_alignEnd="@+id/set"
-            android:layout_alignRight="@+id/set"
-            android:layout_marginBottom="10dp"
-            android:gravity="center_horizontal"
-            android:inputType="number"
-            app:layout_constraintHorizontal_bias="0.059"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            tools:layout_editor_absoluteY="190dp" />
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="月"
+                android:textSize="30sp" />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/minute"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_above="@+id/set"
-            android:layout_alignEnd="@+id/set"
-            android:layout_alignRight="@+id/set"
-            android:layout_marginBottom="10dp"
-            android:gravity="center_horizontal"
-            android:inputType="number"
-            app:layout_constraintHorizontal_bias="0.059"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            tools:layout_editor_absoluteY="190dp" />
+            android:layout_height="50dp"
+            android:layout_marginLeft="130dp"
+            android:layout_marginRight="130dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_above="@+id/set"
+                android:layout_alignEnd="@+id/set"
+                android:layout_alignRight="@+id/set"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:inputType="number"
+                app:layout_constraintHorizontal_bias="0.059"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:layout_editor_absoluteY="190dp" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="日"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="130dp"
+            android:layout_marginRight="130dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/hour"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_above="@+id/set"
+                android:layout_alignEnd="@+id/set"
+                android:layout_alignRight="@+id/set"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:inputType="number"
+                app:layout_constraintHorizontal_bias="0.059"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:layout_editor_absoluteY="190dp" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="時"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="130dp"
+            android:layout_marginRight="130dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/minute"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_above="@+id/set"
+                android:layout_alignEnd="@+id/set"
+                android:layout_alignRight="@+id/set"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:inputType="number"
+                app:layout_constraintHorizontal_bias="0.059"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:layout_editor_absoluteY="190dp" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="分"
+                android:textSize="30sp" />
+        </LinearLayout>
 
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:layout_margin="20dp"
-            android:layout_marginBottom="154dp"
+            android:layout_marginBottom="170dp"
             android:background="#fff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -124,24 +194,29 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btndel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="1"
-                android:text="設定削除"
-                app:layout_constraintLeft_toRightOf="@+id/settingbtn"
-                tools:layout_editor_absoluteY="447dp" />
-
-            <Button
                 android:id="@+id/settingbtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_weight="1"
-                android:text="設定保存"
+                android:background="@drawable/flame_style3"
+                android:text="保存"
                 app:layout_constraintLeft_toRightOf="@+id/linearLayout"
                 tools:layout_editor_absoluteY="447dp" />
+
+            <Button
+                android:id="@+id/btndel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/flame_style2"
+                android:text="削除"
+                app:layout_constraintLeft_toRightOf="@+id/settingbtn"
+                tools:layout_editor_absoluteY="447dp" />
+
         </LinearLayout>
 
 
