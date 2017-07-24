@@ -23,6 +23,7 @@ import com.getirkit.example.activity.DBManager.IRkitDBManager;
 import com.getirkit.example.activity.datatable.DTableINFRARED;
 import com.getirkit.example.activity.ConnectivityManager;
 import com.getirkit.example.activity.datatable.DTablePHONETBL;
+import com.getirkit.example.activity.datatable.DTableVOICE;
 import com.getirkit.example.activity.datatable.DTableWIFI;
 import com.getirkit.example.adapter.TriggerListAdapter;
 import com.getirkit.example.fragment.TriggersFragment;
@@ -99,12 +100,12 @@ public class MainActivity extends AppCompatActivity
         //manager.ALLDeleteWIFI();
         //manager.ALLDeletePHONETBL();
 
-        ArrayList<DTablePHONETBL> lst  = new ArrayList<DTablePHONETBL>();
-        lst = manager.selectAllPHONETBL();
-        for (DTablePHONETBL infra: lst
+        ArrayList<DTableVOICE> lst  = new ArrayList<DTableVOICE>();
+        lst = manager.selectAllVOICE();
+        for (DTableVOICE infra: lst
              ) {
             Log.d(TAG,"MainActivity:106行目 "+infra.getREDID());
-            Log.d(TAG,""+infra.getREDID()+" , "+infra.getONOFF());
+            Log.d(TAG,""+infra.getREDID()+" , "+infra.getVOICE());
         }
         manager.close();
 
