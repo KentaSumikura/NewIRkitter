@@ -5,15 +5,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.widget.Toast;
 
 import com.getirkit.example.R;
+import com.getirkit.example.activity.DBManager.IRkitDBManager;
+import com.getirkit.example.activity.datatable.DTableINFRARED;
 
 public class TimerConf extends AppCompatActivity {
     private static int bid2 = 2;
@@ -32,10 +39,82 @@ public class TimerConf extends AppCompatActivity {
     private int setminute;
     private int setmonth;
     private int setdate;
+    int item;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer_conf);
+
+        //db
+        IRkitDBManager dbwifi = new IRkitDBManager(getApplicationContext());
+        ArrayList<DTableINFRARED> infrailst = new ArrayList<DTableINFRARED>();
+        infrailst = dbwifi.selectAllINFRARED();
+        //DBボタン
+        Button button = (Button) findViewById(R.id.settingbtn);
+        Button buttondel = (Button) findViewById(R.id.settingdel);
+
+        //プルダウンメニュー
+        Spinner spinner;
+        ArrayList<String> spinnerItems = new ArrayList<>();
+
+        for (DTableINFRARED infra : infrailst
+                ) {
+
+            spinnerItems.add(infra.getREDPATTERN());
+
+        }
+
+        spinner = (Spinner) findViewById(R.id.spinner);
+
+        // ArrayAdapter
+        ArrayAdapter<String> adapter
+                = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerItems);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // spinner に adapter をセット
+        spinner.setAdapter(adapter);
+
+        // リスナーを登録
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            //　アイテムが選択された時
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Spinner spinner = (Spinner) parent;
+                item = spinner.getSelectedItemPosition();
+
+            }
+
+            //　アイテムが選択されなかった
+            public void onNothingSelected(AdapterView<?> parent) {
+                //
+            }
+        });
+
+        // 設定終了ボタン
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                IRkitDBManager dbwifi = new IRkitDBManager(getApplicationContext());
+
+                //電話情報保存
+                int posion = item;
+                int time = 1;
+
+
+                dbwifi.insertTIME(posion,time);
+                //long flag = dbwifi.insertTIME(posion,time);
+
+                //if (flag == 0) {
+                    Toast toast = Toast.makeText(TimerConf.this, "登録しました", Toast.LENGTH_LONG);
+                    toast.show();
+                //} else {
+                  //  Toast toast = Toast.makeText(CallConf.this, "既に登録されています", Toast.LENGTH_LONG);
+                  //  toast.show();
+                //}
+            }
+        });
+
 
 
 

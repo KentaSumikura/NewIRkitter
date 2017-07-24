@@ -38,7 +38,7 @@ public class VoiceConf extends AppCompatActivity {
     public static final String TAG = "IRkitterDBOpenHelper";
 
     private Context context;
-    IRkitDBManager dbwifi = new IRkitDBManager(getApplicationContext());
+   // IRkitDBManager dbwifi = new IRkitDBManager(getApplicationContext());
     int item;
     String Voice;
     Admin admin = new Admin();
@@ -50,7 +50,7 @@ public class VoiceConf extends AppCompatActivity {
 
 
         //dbセットアップ
-        //IRkitDBManager dbwifi = new IRkitDBManager(getApplicationContext());
+        IRkitDBManager dbwifi = new IRkitDBManager(getApplicationContext());
         ArrayList<DTableINFRARED> infrailst = new ArrayList<DTableINFRARED>();
         infrailst = dbwifi.selectAllINFRARED();
         //ボタンセットアップ
@@ -166,6 +166,8 @@ public class VoiceConf extends AppCompatActivity {
 
             TextView textView = (TextView) findViewById(R.id.textView5);
             textView.setText(resultsString);
+
+            IRkitDBManager dbwifi = new IRkitDBManager(getApplicationContext());
 
             ArrayList<DTableVOICE> voiceilst  = new ArrayList<DTableVOICE>();
             voiceilst = dbwifi.selectAllVOICE();
