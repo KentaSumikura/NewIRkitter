@@ -48,6 +48,7 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver{
                 .setContentIntent(pendingIntent)
                 .build();
 
+
         // 古い通知を削除
         notificationManager.cancelAll();
         // 通知

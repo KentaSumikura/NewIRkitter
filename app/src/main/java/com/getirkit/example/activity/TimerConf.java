@@ -37,6 +37,8 @@ public class TimerConf extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer_conf);
 
+
+
         //アラームの取り消し
         button2 = (Button) this.findViewById(R.id.button2);
         button2.setOnClickListener(new View.OnClickListener() {

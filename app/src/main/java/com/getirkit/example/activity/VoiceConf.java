@@ -56,6 +56,7 @@ public class VoiceConf extends AppCompatActivity {
         //ボタンセットアップ
         Button button2 = (Button) findViewById(R.id.button2);
         Button button = (Button)findViewById(R.id.button);
+        Button buttondel = (Button) findViewById(R.id.btndel);
         final EditText edit = (EditText)findViewById(R.id.editText);
 
 
@@ -123,6 +124,21 @@ public class VoiceConf extends AppCompatActivity {
                    // toast.show();
                // }
             }
+        });
+
+        // 設定削除ボタン
+        buttondel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                IRkitDBManager voicetbl = new IRkitDBManager(getApplicationContext());
+
+                voicetbl.ALLDeleteVOICE();
+
+                Toast toast = Toast.makeText(VoiceConf.this, "設定情報を削除しました", Toast.LENGTH_LONG);
+                toast.show();
+            }
+
         });
 
 
