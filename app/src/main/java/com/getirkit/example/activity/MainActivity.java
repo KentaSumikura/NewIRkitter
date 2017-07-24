@@ -609,28 +609,4 @@ public class MainActivity extends AppCompatActivity
             });
         }
     }
-
-
-    //CallReciver用
-    //トリガーで使うクラス
-    public void CallTransmission() {
-
-        //db
-        int po = 0;
-        IRkitDBManager db = new IRkitDBManager(getApplicationContext());
-        ArrayList<DTablePHONETBL> phoneilst  = new ArrayList<DTablePHONETBL>();
-        phoneilst = db.selectAllPHONETBL();
-        for (DTablePHONETBL phonetbl: phoneilst
-                ) {
-            po = (int) phonetbl.getREDID();
-            //
-            // ]Transmission(po);
-        }
-
-
-
-
-    }
-
-
 }
