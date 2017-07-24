@@ -6,47 +6,73 @@
     android:layout_height="match_parent"
     tools:context="com.getirkit.example.activity.CallConf">
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="216dp"
-        android:layout_height="139dp"
-        android:text="赤外線を選択してください"
-        tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="74dp" />
+    <LinearLayout
+        android:layout_width="408dp"
+        android:layout_height="598dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="237dp"
-        android:layout_height="42dp"
-        android:layout_margin="20dp"
-        android:background="#fff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        android:layout_marginBottom="154dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/settingbtn"
-        android:layout_width="328dp"
-        android:layout_height="48dp"
-        android:text="設定終了"
-        android:textColor="#ffffff"
-        android:background="@drawable/frame_style"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="@+id/spinner"
-        app:layout_constraintRight_toRightOf="@+id/spinner"
-        app:layout_constraintTop_toTopOf="@+id/spinner"
-        app:layout_constraintVertical_bias="0.498" />
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
-    <Button
-        android:id="@+id/settingdel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="設定削除"
-        android:textColor="#ffffff"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="289dp" />
+            <Button
+                android:id="@+id/settingdel"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:text="設定削除"
+                android:textColor="#ffffff"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="289dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:text="赤外線を選択してください"
+            tools:layout_editor_absoluteX="47dp"
+            tools:layout_editor_absoluteY="74dp" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="80dp"
+            android:layout_marginTop="20dp"
+            android:background="#fff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/settingbtn"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/frame_style"
+            android:text="設定終了"
+            android:textColor="#ffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/spinner"
+            app:layout_constraintRight_toRightOf="@+id/spinner"
+            app:layout_constraintTop_toTopOf="@+id/spinner"
+            app:layout_constraintVertical_bias="0.498" />
+
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
