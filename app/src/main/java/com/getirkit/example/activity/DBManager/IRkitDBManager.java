@@ -484,6 +484,26 @@ public class IRkitDBManager extends SQLiteOpenHelper {
         }
         return lst;
     }
+
+    public ArrayList<com.getirkit.example.activity.datatable.DTableVOICE> selectVOICE(String voice){
+        ArrayList<com.getirkit.example.activity.datatable.DTableVOICE> lst = new ArrayList<com.getirkit.example.activity.datatable.DTableVOICE>();
+        StringBuilder sql = new StringBuilder();
+        sql.append(" SELECT *");
+        sql.append(" FROM voice");
+        sql.append(" WHERE voice = \"" + voice + "\";");
+        Cursor c = sdb.rawQuery(sql.toString(), null);
+        boolean isEof = c.moveToFirst();
+        while (isEof) {
+            com.getirkit.example.activity.datatable.DTableVOICE dt = new com.getirkit.example.activity.datatable.DTableVOICE();
+            dt.setREDID(c.getLong(0));
+            dt.setVOICE(c.getString(1));
+            dt.setONOFF(c.getLong(2));
+            lst.add(dt);
+            isEof = c.moveToNext();
+        }
+        return lst;
+    }
+
     //************** wifi�p�֐� ***************
     public void insertWIFI(
             long redid

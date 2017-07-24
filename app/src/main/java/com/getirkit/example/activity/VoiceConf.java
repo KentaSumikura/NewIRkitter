@@ -170,14 +170,12 @@ public class VoiceConf extends AppCompatActivity {
             IRkitDBManager dbwifi = new IRkitDBManager(getApplicationContext());
             Admin admin = new Admin();
             ArrayList<DTableVOICE> voiceilst  = new ArrayList<DTableVOICE>();
-            voiceilst = dbwifi.selectAllVOICE();
+            voiceilst = dbwifi.selectVOICE(resultsString);
             for (DTableVOICE voicetbl: voiceilst
                     ) {
-                if (resultsString == voicetbl.getVOICE()){
 
                     int po = (int) voicetbl.getREDID();
                     admin.Transmission(po);
-                }
 
             }
             dbwifi.close();
