@@ -65,6 +65,7 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver{
 
             admin.Transmission(po);
         }
+        mgr.close();
         //ここまで追記テスト
 
         // 古い通知を削除
