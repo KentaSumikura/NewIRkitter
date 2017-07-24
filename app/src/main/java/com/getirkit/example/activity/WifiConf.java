@@ -32,9 +32,6 @@ import java.util.ArrayList;
  */
 public class WifiConf extends AppCompatActivity {
 
-    // 各フィールドの設定
-    CallReceiver phoneStateListener;
-    TelephonyManager manager;
     int item;
 
 
@@ -116,16 +113,6 @@ public class WifiConf extends AppCompatActivity {
 
 
 
-
-
-        //Callconf
-        // PhoneReceiverインスタンスの生成
-        phoneStateListener = new CallReceiver(this);
-        // TelephonyManagerインスタンスの生成(Context.TELEPHONY_SERVICEを指定)
-        manager = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE));
-
-
-
         // wifiボタン
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,11 +169,6 @@ public class WifiConf extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        manager.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
-    }
 
 
 
