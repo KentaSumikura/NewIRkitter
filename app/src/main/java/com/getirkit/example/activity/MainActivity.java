@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity
 
         //manager.ALLDeleteINFRARED();
         //manager.ALLDeleteWIFI();
-        //manager.ALLDeletePHONETBL();
+        manager.ALLDeletePHONETBL();
 
         ArrayList<DTableINFRARED> lst  = new ArrayList<DTableINFRARED>();
         lst = manager.selectAllINFRARED();

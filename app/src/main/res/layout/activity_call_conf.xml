@@ -39,4 +39,14 @@
         app:layout_constraintRight_toRightOf="@+id/spinner"
         app:layout_constraintTop_toTopOf="@+id/spinner"
         app:layout_constraintVertical_bias="0.498" />
+
+    <Button
+        android:id="@+id/settingdel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="設定削除"
+        android:textColor="#ffffff"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="289dp" />
 </android.support.constraint.ConstraintLayout>

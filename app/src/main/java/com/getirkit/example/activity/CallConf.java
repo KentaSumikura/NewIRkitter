@@ -1,6 +1,8 @@
 package com.getirkit.example.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.PhoneStateListener;
@@ -12,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.getirkit.example.R;
 import com.getirkit.example.activity.DBManager.IRkitDBManager;
@@ -49,7 +52,9 @@ public class CallConf extends AppCompatActivity {
 
         for (DTableINFRARED infra: infrailst
                 ) {
+
             spinnerItems.add(infra.getREDPATTERN());
+
         }
 
 
@@ -93,12 +98,18 @@ public class CallConf extends AppCompatActivity {
 
                 IRkitDBManager dbwifi = new IRkitDBManager(getApplicationContext());
 
-                //WifSSID情報保存
+                //電話情報保存
                 int posion = item;
 
-                dbwifi.insertPHONETBL(posion);
+                long flag = dbwifi.insertPHONETBL(posion);
 
-
+                if(flag == 0) {
+                    Toast toast = Toast.makeText(CallConf.this, "登録しました", Toast.LENGTH_LONG);
+                    toast.show();
+                }else {
+                    Toast toast = Toast.makeText(CallConf.this, "既に登録されています", Toast.LENGTH_LONG);
+                    toast.show();
+                }
             }
         });
 
